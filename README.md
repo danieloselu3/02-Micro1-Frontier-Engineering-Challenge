@@ -259,6 +259,26 @@ separate processes.
 
 ---
 
+## Agent trajectories
+
+[`trajectories/`](trajectories/) holds one full trace per distinct path through
+the system — every prompt, every response, the deterministic stages between
+them, any retry, and whether a clinician was required.
+
+```bash
+make trajectories    # regenerates from the cache, no API key
+```
+
+`CASE-046` is the one worth reading. The extractor meets a handwritten member
+id, reports `MBR-100?48` at 0.55 rather than guessing the smudged digit, and
+the retry on an enlarged image returns **the same value at lower confidence** —
+it looked harder and became less sure. Identity then resolves on name and date
+of birth at 0.97, the case is approved correctly, and it still goes to a human
+because that field sits below the confidence floor.
+
+The set includes `CASE-034`, which the system gets **wrong**. A trajectory set
+showing only successes is marketing, not evidence.
+
 ## Reproducing
 
 Every model response is committed under `eval/cache/`, so the headline result

@@ -32,6 +32,9 @@ eval:  ## Run the full pipeline over the evaluation set
 eval-replay:  ## Reproduce both results from committed model responses (no API key)
 	$(PY) -m eval.harness.run --system both --replay
 
+trajectories:  ## Export agent traces from the cache (no API key)
+	$(PY) -m eval.harness.trajectories
+
 process:  ## Adjudicate every case and file the results for review (uses the cache)
 	$(PY) -m services.worker.process
 
