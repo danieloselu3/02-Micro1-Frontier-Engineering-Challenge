@@ -10,14 +10,14 @@
     "plan_id": "PLN-PPO-GOLD",
     "group_id": "GRP-1055",
     "status": "active",
-    "effective_date": "2025-10-16",
+    "effective_date": "2025-10-18",
     "termination_date": null,
     "premium_paid_through": "2026-12-31",
     "state": "MI",
-    "enrolled_at": "2025-10-16"
+    "enrolled_at": "2025-10-18"
   },
   "provider": {
-    "npi": "9481760495",
+    "npi": "9270405488",
     "name": "Johnson Regional Medical Center",
     "specialty": "Gastroenterology",
     "network_tier": "in_network",
@@ -54,7 +54,7 @@
   "clinical_narrative": "45-year-old presenting for average-risk colorectal cancer screening.\nNo family history of colorectal malignancy, no rectal bleeding, no change in\nbowel habit. Submitting for authorization prior to scheduling.\n",
   "form_member_name": "Mark Rodgers",
   "form_member_id": "MBR-100120",
-  "form_provider_npi": "9481760495",
+  "form_provider_npi": "9270405488",
   "form_date_of_service": "08/14/2026",
   "label": {
     "case_id": "CASE-001",
@@ -66,7 +66,7 @@
     "expected_fields": {
       "member_name": "Mark Rodgers",
       "member_id": "MBR-100120",
-      "provider_npi": "9481760495",
+      "provider_npi": "9270405488",
       "procedure_code": "45378",
       "diagnosis_code": "Z12.11",
       "date_of_service": "08/14/2026"

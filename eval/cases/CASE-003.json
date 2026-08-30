@@ -10,14 +10,14 @@
     "plan_id": "PLN-EPO-VALUE",
     "group_id": "GRP-1007",
     "status": "active",
-    "effective_date": "2025-10-14",
+    "effective_date": "2025-09-18",
     "termination_date": null,
     "premium_paid_through": "2026-12-31",
     "state": "MI",
-    "enrolled_at": "2025-10-14"
+    "enrolled_at": "2025-09-18"
   },
   "provider": {
-    "npi": "9408300570",
+    "npi": "9752880732",
     "name": "Brady Orthopedic Associates",
     "specialty": "Diagnostic Radiology",
     "network_tier": "in_network",
@@ -54,7 +54,7 @@
   "clinical_narrative": "Patient with a productive cough for eight days and low-grade fever.\nRequesting chest radiograph, 2 views, to exclude pneumonia. Submitting\nauthorization request per practice protocol.\n",
   "form_member_name": "Lacey Mitchell",
   "form_member_id": "MBR-100214",
-  "form_provider_npi": "9408300570",
+  "form_provider_npi": "9752880732",
   "form_date_of_service": "08/14/2026",
   "label": {
     "case_id": "CASE-003",
@@ -66,7 +66,7 @@
     "expected_fields": {
       "member_name": "Lacey Mitchell",
       "member_id": "MBR-100214",
-      "provider_npi": "9408300570",
+      "provider_npi": "9752880732",
       "procedure_code": "71046",
       "diagnosis_code": "J06.9",
       "date_of_service": "08/14/2026"
