@@ -1,0 +1,78 @@
+{
+  "case_id": "CASE-003",
+  "scenario": "no_auth_required",
+  "member": {
+    "member_id": "MBR-100214",
+    "first_name": "Lacey",
+    "last_name": "Mitchell",
+    "date_of_birth": "1986-10-31",
+    "sex": "F",
+    "plan_id": "PLN-EPO-VALUE",
+    "group_id": "GRP-1007",
+    "status": "active",
+    "effective_date": "2025-10-14",
+    "termination_date": null,
+    "premium_paid_through": "2026-12-31",
+    "state": "MI",
+    "enrolled_at": "2025-10-14"
+  },
+  "provider": {
+    "npi": "9408300570",
+    "name": "Brady Orthopedic Associates",
+    "specialty": "Diagnostic Radiology",
+    "network_tier": "in_network",
+    "license_state": "OH",
+    "license_expiry": "2027-06-30",
+    "contract_start": "2023-01-01",
+    "contract_end": null,
+    "sanctioned": false,
+    "credentialed_procedures": [
+      "72148",
+      "70553",
+      "74177",
+      "27447",
+      "29881",
+      "22551",
+      "64483",
+      "15823",
+      "19318",
+      "J9310",
+      "33533",
+      "99213",
+      "71046",
+      "80053",
+      "97110",
+      "45378"
+    ]
+  },
+  "procedure_code": "71046",
+  "diagnosis_codes": [
+    "J06.9"
+  ],
+  "date_of_service": "2026-08-14",
+  "units_requested": 1,
+  "clinical_narrative": "Patient with a productive cough for eight days and low-grade fever.\nRequesting chest radiograph, 2 views, to exclude pneumonia. Submitting\nauthorization request per practice protocol.\n",
+  "form_member_name": "Lacey Mitchell",
+  "form_member_id": "MBR-100214",
+  "form_provider_npi": "9408300570",
+  "form_date_of_service": "08/14/2026",
+  "label": {
+    "case_id": "CASE-003",
+    "verdict": "no_auth_required",
+    "governing_rule": "R1",
+    "rationale": "CPT 71046 (Radiologic examination, chest, 2 views) does not require prior authorization under this plan. The provider may proceed; no authorization is issued because none was adjudicated.",
+    "scenario": "no_auth_required",
+    "is_adversarial": false,
+    "expected_fields": {
+      "member_name": "Lacey Mitchell",
+      "member_id": "MBR-100214",
+      "provider_npi": "9408300570",
+      "procedure_code": "71046",
+      "diagnosis_code": "J06.9",
+      "date_of_service": "08/14/2026"
+    },
+    "degradation": "fax",
+    "expected_missing_information": [],
+    "requires_human_review": false
+  }
+}

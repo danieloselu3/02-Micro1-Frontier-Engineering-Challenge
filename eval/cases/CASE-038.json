@@ -1,0 +1,78 @@
+{
+  "case_id": "CASE-038",
+  "scenario": "necessity_borderline",
+  "member": {
+    "member_id": "MBR-100012",
+    "first_name": "Darryl",
+    "last_name": "Grimes",
+    "date_of_birth": "1981-05-19",
+    "sex": "M",
+    "plan_id": "PLN-PPO-GOLD",
+    "group_id": "GRP-1096",
+    "status": "active",
+    "effective_date": "2025-06-02",
+    "termination_date": null,
+    "premium_paid_through": "2026-12-31",
+    "state": "PA",
+    "enrolled_at": "2025-06-02"
+  },
+  "provider": {
+    "npi": "9450757885",
+    "name": "Mendez Orthopedic Associates",
+    "specialty": "Pain Medicine",
+    "network_tier": "in_network",
+    "license_state": "PA",
+    "license_expiry": "2027-06-30",
+    "contract_start": "2023-01-01",
+    "contract_end": null,
+    "sanctioned": false,
+    "credentialed_procedures": [
+      "72148",
+      "70553",
+      "74177",
+      "27447",
+      "29881",
+      "22551",
+      "64483",
+      "15823",
+      "19318",
+      "J9310",
+      "33533",
+      "99213",
+      "71046",
+      "80053",
+      "97110",
+      "45378"
+    ]
+  },
+  "procedure_code": "64483",
+  "diagnosis_codes": [
+    "M54.16"
+  ],
+  "date_of_service": "2026-08-14",
+  "units_requested": 1,
+  "clinical_narrative": "45-year-old with right-sided radicular leg pain rated 6/10, present for\napproximately seven weeks.\n\nThe patient completed four weeks of physical therapy with partial benefit\nand reports the home exercise programme has been followed inconsistently due\nto work schedule. A course of gabapentin was started three weeks ago and\ntitrated to 900 mg daily.\n\nExamination shows a positive straight leg raise on the right. Reflexes are\nsymmetric and strength is 5/5 throughout; sensory examination is described\nas \"subjectively reduced\" in the right calf without a clear dermatomal\npattern.\n\nMRI dated 06/28/2026 shows a right paracentral disc protrusion at L5-S1\nwith contact on the traversing S1 nerve root. Whether this fully accounts\nfor the reported distribution is uncertain.\n",
+  "form_member_name": "Darryl Grimes",
+  "form_member_id": "MBR-100012",
+  "form_provider_npi": "9450757885",
+  "form_date_of_service": "08/14/2026",
+  "label": {
+    "case_id": "CASE-038",
+    "verdict": "pended",
+    "governing_rule": "MP-PAI-001",
+    "rationale": "Conservative therapy was partial and adherence inconsistent; the sensory findings are non-dermatomal and the imaging correlation is uncertain. The record supports neither a clean approval nor a defensible denial.",
+    "scenario": "necessity_borderline",
+    "is_adversarial": true,
+    "expected_fields": {
+      "member_name": "Darryl Grimes",
+      "member_id": "MBR-100012",
+      "provider_npi": "9450757885",
+      "procedure_code": "64483",
+      "diagnosis_code": "M54.16",
+      "date_of_service": "08/14/2026"
+    },
+    "degradation": "scan",
+    "expected_missing_information": [],
+    "requires_human_review": true
+  }
+}

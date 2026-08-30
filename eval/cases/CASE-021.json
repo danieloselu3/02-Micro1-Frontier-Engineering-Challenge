@@ -1,0 +1,78 @@
+{
+  "case_id": "CASE-021",
+  "scenario": "duplicate_authorization",
+  "member": {
+    "member_id": "MBR-100115",
+    "first_name": "Robert",
+    "last_name": "Martin",
+    "date_of_birth": "1952-05-03",
+    "sex": "M",
+    "plan_id": "PLN-EPO-VALUE",
+    "group_id": "GRP-1090",
+    "status": "active",
+    "effective_date": "2025-05-09",
+    "termination_date": null,
+    "premium_paid_through": "2026-12-31",
+    "state": "OH",
+    "enrolled_at": "2025-05-09"
+  },
+  "provider": {
+    "npi": "9952328902",
+    "name": "Taylor Imaging Partners",
+    "specialty": "Orthopedic Surgery",
+    "network_tier": "in_network",
+    "license_state": "OH",
+    "license_expiry": "2027-06-30",
+    "contract_start": "2023-01-01",
+    "contract_end": null,
+    "sanctioned": false,
+    "credentialed_procedures": [
+      "72148",
+      "70553",
+      "74177",
+      "27447",
+      "29881",
+      "22551",
+      "64483",
+      "15823",
+      "19318",
+      "J9310",
+      "33533",
+      "99213",
+      "71046",
+      "80053",
+      "97110",
+      "45378"
+    ]
+  },
+  "procedure_code": "70553",
+  "diagnosis_codes": [
+    "G43.909"
+  ],
+  "date_of_service": "2026-08-14",
+  "units_requested": 1,
+  "clinical_narrative": "Patient with persistent symptoms unresponsive to initial management.\nConservative treatment including physical therapy and anti-inflammatory\nmedication has been completed without adequate improvement. Examination and\nprior imaging support the requested service. Referred for further evaluation\nand management.\n",
+  "form_member_name": "Robert Martin",
+  "form_member_id": "MBR-100115",
+  "form_provider_npi": "9952328902",
+  "form_date_of_service": "08/14/2026",
+  "label": {
+    "case_id": "CASE-021",
+    "verdict": "denied",
+    "governing_rule": "R8",
+    "rationale": "Authorization AUTH-CASE-021 is already active for this member and procedure through 09/23/2026. The existing authorization should be used.",
+    "scenario": "duplicate_authorization",
+    "is_adversarial": true,
+    "expected_fields": {
+      "member_name": "Robert Martin",
+      "member_id": "MBR-100115",
+      "provider_npi": "9952328902",
+      "procedure_code": "70553",
+      "diagnosis_code": "G43.909",
+      "date_of_service": "08/14/2026"
+    },
+    "degradation": "clean",
+    "expected_missing_information": [],
+    "requires_human_review": true
+  }
+}

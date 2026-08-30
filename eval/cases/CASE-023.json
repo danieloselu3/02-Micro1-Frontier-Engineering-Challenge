@@ -1,0 +1,80 @@
+{
+  "case_id": "CASE-023",
+  "scenario": "code_mismatch",
+  "member": {
+    "member_id": "MBR-100097",
+    "first_name": "Benjamin",
+    "last_name": "Jones",
+    "date_of_birth": "1984-05-04",
+    "sex": "M",
+    "plan_id": "PLN-PPO-GOLD",
+    "group_id": "GRP-1094",
+    "status": "active",
+    "effective_date": "2025-08-19",
+    "termination_date": null,
+    "premium_paid_through": "2026-12-31",
+    "state": "OH",
+    "enrolled_at": "2025-08-19"
+  },
+  "provider": {
+    "npi": "9676413636",
+    "name": "Benton Orthopedic Associates",
+    "specialty": "Orthopedic Surgery",
+    "network_tier": "in_network",
+    "license_state": "OH",
+    "license_expiry": "2027-06-30",
+    "contract_start": "2023-01-01",
+    "contract_end": null,
+    "sanctioned": false,
+    "credentialed_procedures": [
+      "72148",
+      "70553",
+      "74177",
+      "27447",
+      "29881",
+      "22551",
+      "64483",
+      "15823",
+      "19318",
+      "J9310",
+      "33533",
+      "99213",
+      "71046",
+      "80053",
+      "97110",
+      "45378"
+    ]
+  },
+  "procedure_code": "72148",
+  "diagnosis_codes": [
+    "J06.9"
+  ],
+  "date_of_service": "2026-08-14",
+  "units_requested": 1,
+  "clinical_narrative": "Patient with persistent symptoms unresponsive to initial management.\nConservative treatment including physical therapy and anti-inflammatory\nmedication has been completed without adequate improvement. Examination and\nprior imaging support the requested service. Referred for further evaluation\nand management.\n",
+  "form_member_name": "Benjamin Jones",
+  "form_member_id": "MBR-100097",
+  "form_provider_npi": "9676413636",
+  "form_date_of_service": "08/14/2026",
+  "label": {
+    "case_id": "CASE-023",
+    "verdict": "pended",
+    "governing_rule": "R9",
+    "rationale": "Diagnosis J06.9 (acute upper respiratory infection) does not support CPT 72148 (MRI lumbar spine). Returned for correction of the diagnosis code rather than denied.",
+    "scenario": "code_mismatch",
+    "is_adversarial": true,
+    "expected_fields": {
+      "member_name": "Benjamin Jones",
+      "member_id": "MBR-100097",
+      "provider_npi": "9676413636",
+      "procedure_code": "72148",
+      "diagnosis_code": "J06.9",
+      "date_of_service": "08/14/2026"
+    },
+    "degradation": "fax",
+    "expected_missing_information": [
+      "A diagnosis code consistent with lumbar spine imaging"
+    ],
+    "requires_human_review": true
+  }
+}

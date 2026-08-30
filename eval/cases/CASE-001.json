@@ -1,0 +1,78 @@
+{
+  "case_id": "CASE-001",
+  "scenario": "no_auth_required",
+  "member": {
+    "member_id": "MBR-100120",
+    "first_name": "Mark",
+    "last_name": "Rodgers",
+    "date_of_birth": "1980-12-05",
+    "sex": "M",
+    "plan_id": "PLN-PPO-GOLD",
+    "group_id": "GRP-1055",
+    "status": "active",
+    "effective_date": "2025-10-16",
+    "termination_date": null,
+    "premium_paid_through": "2026-12-31",
+    "state": "MI",
+    "enrolled_at": "2025-10-16"
+  },
+  "provider": {
+    "npi": "9481760495",
+    "name": "Johnson Regional Medical Center",
+    "specialty": "Gastroenterology",
+    "network_tier": "in_network",
+    "license_state": "MI",
+    "license_expiry": "2027-06-30",
+    "contract_start": "2023-01-01",
+    "contract_end": null,
+    "sanctioned": false,
+    "credentialed_procedures": [
+      "72148",
+      "70553",
+      "74177",
+      "27447",
+      "29881",
+      "22551",
+      "64483",
+      "15823",
+      "19318",
+      "J9310",
+      "33533",
+      "99213",
+      "71046",
+      "80053",
+      "97110",
+      "45378"
+    ]
+  },
+  "procedure_code": "45378",
+  "diagnosis_codes": [
+    "Z12.11"
+  ],
+  "date_of_service": "2026-08-14",
+  "units_requested": 1,
+  "clinical_narrative": "45-year-old presenting for average-risk colorectal cancer screening.\nNo family history of colorectal malignancy, no rectal bleeding, no change in\nbowel habit. Submitting for authorization prior to scheduling.\n",
+  "form_member_name": "Mark Rodgers",
+  "form_member_id": "MBR-100120",
+  "form_provider_npi": "9481760495",
+  "form_date_of_service": "08/14/2026",
+  "label": {
+    "case_id": "CASE-001",
+    "verdict": "no_auth_required",
+    "governing_rule": "R1",
+    "rationale": "CPT 45378 (Colonoscopy, diagnostic, with or without collection of specimen) does not require prior authorization under this plan. The provider may proceed; no authorization is issued because none was adjudicated.",
+    "scenario": "no_auth_required",
+    "is_adversarial": false,
+    "expected_fields": {
+      "member_name": "Mark Rodgers",
+      "member_id": "MBR-100120",
+      "provider_npi": "9481760495",
+      "procedure_code": "45378",
+      "diagnosis_code": "Z12.11",
+      "date_of_service": "08/14/2026"
+    },
+    "degradation": "clean",
+    "expected_missing_information": [],
+    "requires_human_review": false
+  }
+}

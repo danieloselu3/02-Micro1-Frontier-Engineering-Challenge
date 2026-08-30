@@ -1,0 +1,78 @@
+{
+  "case_id": "CASE-025",
+  "scenario": "necessity_met",
+  "member": {
+    "member_id": "MBR-100003",
+    "first_name": "Vincent",
+    "last_name": "Daniels",
+    "date_of_birth": "1969-04-07",
+    "sex": "M",
+    "plan_id": "PLN-EPO-VALUE",
+    "group_id": "GRP-1082",
+    "status": "active",
+    "effective_date": "2025-10-24",
+    "termination_date": null,
+    "premium_paid_through": "2026-12-31",
+    "state": "MI",
+    "enrolled_at": "2025-10-24"
+  },
+  "provider": {
+    "npi": "9527295446",
+    "name": "Lambert Surgical Institute",
+    "specialty": "Neurology",
+    "network_tier": "in_network",
+    "license_state": "MI",
+    "license_expiry": "2027-06-30",
+    "contract_start": "2023-01-01",
+    "contract_end": null,
+    "sanctioned": false,
+    "credentialed_procedures": [
+      "72148",
+      "70553",
+      "74177",
+      "27447",
+      "29881",
+      "22551",
+      "64483",
+      "15823",
+      "19318",
+      "J9310",
+      "33533",
+      "99213",
+      "71046",
+      "80053",
+      "97110",
+      "45378"
+    ]
+  },
+  "procedure_code": "72148",
+  "diagnosis_codes": [
+    "M54.16"
+  ],
+  "date_of_service": "2026-08-14",
+  "units_requested": 1,
+  "clinical_narrative": "57-year-old presenting with axial low back pain radiating into the left\nlower extremity, onset approximately four months ago after a lifting injury\nat work. Pain is rated 7/10 and worse with sitting and forward flexion.\n\nConservative management: completed 8 weeks of supervised physical therapy\n(24 visits, 06/02/2026 through 07/28/2026) with documented adherence, plus a\nscheduled course of meloxicam 15 mg daily and a two-week trial of\ncyclobenzaprine. Symptoms have not improved; the patient reports no\nmeaningful change in functional capacity.\n\nNeurologic examination: diminished left patellar reflex (1+ compared with 2+\non the right), decreased sensation in the L4 dermatome, and 4/5 strength on\nleft ankle dorsiflexion. Straight leg raise positive at 40 degrees on the\nleft.\n\nPlain radiographs of the lumbar spine (2 views, 07/30/2026) demonstrate disc\nspace narrowing at L4-L5 without acute fracture or spondylolisthesis.\n\nThe patient has been referred for neurosurgical consultation and MRI is\nrequired to determine whether a surgical decompression is indicated.\n",
+  "form_member_name": "Vincent Daniels",
+  "form_member_id": "MBR-100003",
+  "form_provider_npi": "9527295446",
+  "form_date_of_service": "08/14/2026",
+  "label": {
+    "case_id": "CASE-025",
+    "verdict": "approved",
+    "governing_rule": "MP-IMG-001",
+    "rationale": "All criteria in the lumbar MRI policy are documented: six weeks of conservative therapy, a focal neurologic deficit, prior plain radiographs, and a pending surgical consultation.",
+    "scenario": "necessity_met",
+    "is_adversarial": false,
+    "expected_fields": {
+      "member_name": "Vincent Daniels",
+      "member_id": "MBR-100003",
+      "provider_npi": "9527295446",
+      "procedure_code": "72148",
+      "diagnosis_code": "M54.16",
+      "date_of_service": "08/14/2026"
+    },
+    "degradation": "clean",
+    "expected_missing_information": [],
+    "requires_human_review": false
+  }
+}

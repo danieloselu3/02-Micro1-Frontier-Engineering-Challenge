@@ -1,0 +1,448 @@
+{
+  "seed": 20260830,
+  "plan_year": 2026,
+  "case_count": 49,
+  "cases": [
+    {
+      "case_id": "CASE-001",
+      "scenario": "no_auth_required",
+      "verdict": "no_auth_required",
+      "governing_rule": "R1",
+      "degradation": "clean",
+      "adversarial": false,
+      "requires_human_review": false
+    },
+    {
+      "case_id": "CASE-002",
+      "scenario": "no_auth_required",
+      "verdict": "no_auth_required",
+      "governing_rule": "R1",
+      "degradation": "scan",
+      "adversarial": false,
+      "requires_human_review": false
+    },
+    {
+      "case_id": "CASE-003",
+      "scenario": "no_auth_required",
+      "verdict": "no_auth_required",
+      "governing_rule": "R1",
+      "degradation": "fax",
+      "adversarial": false,
+      "requires_human_review": false
+    },
+    {
+      "case_id": "CASE-004",
+      "scenario": "terminated_policy",
+      "verdict": "denied",
+      "governing_rule": "R2",
+      "degradation": "photo",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-005",
+      "scenario": "terminated_policy",
+      "verdict": "denied",
+      "governing_rule": "R2",
+      "degradation": "clean",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-006",
+      "scenario": "premium_delinquent",
+      "verdict": "denied",
+      "governing_rule": "R2",
+      "degradation": "scan",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-007",
+      "scenario": "within_waiting_period",
+      "verdict": "denied",
+      "governing_rule": "R3",
+      "degradation": "fax",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-008",
+      "scenario": "within_waiting_period",
+      "verdict": "denied",
+      "governing_rule": "R3",
+      "degradation": "photo",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-009",
+      "scenario": "excluded_cosmetic",
+      "verdict": "denied",
+      "governing_rule": "R4",
+      "degradation": "clean",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-010",
+      "scenario": "excluded_cosmetic",
+      "verdict": "denied",
+      "governing_rule": "R4",
+      "degradation": "scan",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-011",
+      "scenario": "out_of_area",
+      "verdict": "denied",
+      "governing_rule": "R5",
+      "degradation": "fax",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-012",
+      "scenario": "out_of_area",
+      "verdict": "denied",
+      "governing_rule": "R5",
+      "degradation": "photo",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-013",
+      "scenario": "out_of_network",
+      "verdict": "denied",
+      "governing_rule": "R6",
+      "degradation": "clean",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-014",
+      "scenario": "out_of_network",
+      "verdict": "denied",
+      "governing_rule": "R6",
+      "degradation": "scan",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-015",
+      "scenario": "provider_sanctioned",
+      "verdict": "denied",
+      "governing_rule": "R6",
+      "degradation": "fax",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-016",
+      "scenario": "license_expired",
+      "verdict": "denied",
+      "governing_rule": "R6",
+      "degradation": "photo",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-017",
+      "scenario": "limit_exhausted",
+      "verdict": "denied",
+      "governing_rule": "R7",
+      "degradation": "clean",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-018",
+      "scenario": "limit_exhausted",
+      "verdict": "denied",
+      "governing_rule": "R7",
+      "degradation": "scan",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-019",
+      "scenario": "limit_partial",
+      "verdict": "partially_approved",
+      "governing_rule": "R7",
+      "degradation": "fax",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-020",
+      "scenario": "limit_partial",
+      "verdict": "partially_approved",
+      "governing_rule": "R7",
+      "degradation": "photo",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-021",
+      "scenario": "duplicate_authorization",
+      "verdict": "denied",
+      "governing_rule": "R8",
+      "degradation": "clean",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-022",
+      "scenario": "duplicate_authorization",
+      "verdict": "denied",
+      "governing_rule": "R8",
+      "degradation": "scan",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-023",
+      "scenario": "code_mismatch",
+      "verdict": "pended",
+      "governing_rule": "R9",
+      "degradation": "fax",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-024",
+      "scenario": "code_mismatch",
+      "verdict": "pended",
+      "governing_rule": "R9",
+      "degradation": "photo",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-025",
+      "scenario": "necessity_met",
+      "verdict": "approved",
+      "governing_rule": "MP-IMG-001",
+      "degradation": "clean",
+      "adversarial": false,
+      "requires_human_review": false
+    },
+    {
+      "case_id": "CASE-026",
+      "scenario": "necessity_met",
+      "verdict": "approved",
+      "governing_rule": "MP-IMG-001",
+      "degradation": "scan",
+      "adversarial": false,
+      "requires_human_review": false
+    },
+    {
+      "case_id": "CASE-027",
+      "scenario": "necessity_met",
+      "verdict": "approved",
+      "governing_rule": "MP-IMG-001",
+      "degradation": "fax",
+      "adversarial": false,
+      "requires_human_review": false
+    },
+    {
+      "case_id": "CASE-028",
+      "scenario": "necessity_met_tka",
+      "verdict": "approved",
+      "governing_rule": "MP-ORT-001",
+      "degradation": "photo",
+      "adversarial": false,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-029",
+      "scenario": "necessity_met_tka",
+      "verdict": "approved",
+      "governing_rule": "MP-ORT-001",
+      "degradation": "clean",
+      "adversarial": false,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-030",
+      "scenario": "necessity_unmet",
+      "verdict": "denied",
+      "governing_rule": "MP-IMG-001",
+      "degradation": "scan",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-031",
+      "scenario": "necessity_unmet",
+      "verdict": "denied",
+      "governing_rule": "MP-IMG-001",
+      "degradation": "fax",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-032",
+      "scenario": "necessity_unmet",
+      "verdict": "denied",
+      "governing_rule": "MP-IMG-001",
+      "degradation": "photo",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-033",
+      "scenario": "necessity_no_evidence",
+      "verdict": "pended",
+      "governing_rule": "MP-IMG-001",
+      "degradation": "clean",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-034",
+      "scenario": "necessity_no_evidence",
+      "verdict": "pended",
+      "governing_rule": "MP-IMG-001",
+      "degradation": "scan",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-035",
+      "scenario": "necessity_no_evidence",
+      "verdict": "pended",
+      "governing_rule": "MP-IMG-001",
+      "degradation": "fax",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-036",
+      "scenario": "necessity_no_evidence_tka",
+      "verdict": "pended",
+      "governing_rule": "MP-ORT-001",
+      "degradation": "photo",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-037",
+      "scenario": "necessity_no_evidence_tka",
+      "verdict": "pended",
+      "governing_rule": "MP-ORT-001",
+      "degradation": "clean",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-038",
+      "scenario": "necessity_borderline",
+      "verdict": "pended",
+      "governing_rule": "MP-PAI-001",
+      "degradation": "scan",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-039",
+      "scenario": "necessity_borderline",
+      "verdict": "pended",
+      "governing_rule": "MP-PAI-001",
+      "degradation": "fax",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-040",
+      "scenario": "cosmetic_functional_exception",
+      "verdict": "denied",
+      "governing_rule": "R4",
+      "degradation": "photo",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-041",
+      "scenario": "cosmetic_purely_aesthetic",
+      "verdict": "denied",
+      "governing_rule": "R4",
+      "degradation": "clean",
+      "adversarial": false,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-042",
+      "scenario": "always_review_specialty_drug",
+      "verdict": "approved",
+      "governing_rule": "MP-ONC-001",
+      "degradation": "scan",
+      "adversarial": false,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-043",
+      "scenario": "always_review_specialty_drug",
+      "verdict": "approved",
+      "governing_rule": "MP-ONC-001",
+      "degradation": "fax",
+      "adversarial": false,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-044",
+      "scenario": "name_mismatch",
+      "verdict": "approved",
+      "governing_rule": "MP-IMG-001",
+      "degradation": "photo",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-045",
+      "scenario": "name_mismatch",
+      "verdict": "approved",
+      "governing_rule": "MP-IMG-001",
+      "degradation": "clean",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-046",
+      "scenario": "illegible_member_id",
+      "verdict": "approved",
+      "governing_rule": "MP-IMG-001",
+      "degradation": "handwritten",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-047",
+      "scenario": "illegible_member_id",
+      "verdict": "approved",
+      "governing_rule": "MP-IMG-001",
+      "degradation": "handwritten",
+      "adversarial": true,
+      "requires_human_review": true
+    },
+    {
+      "case_id": "CASE-048",
+      "scenario": "clean_approval_faxed",
+      "verdict": "approved",
+      "governing_rule": "MP-IMG-001",
+      "degradation": "fax",
+      "adversarial": false,
+      "requires_human_review": false
+    },
+    {
+      "case_id": "CASE-049",
+      "scenario": "clean_approval_faxed",
+      "verdict": "approved",
+      "governing_rule": "MP-IMG-001",
+      "degradation": "fax",
+      "adversarial": false,
+      "requires_human_review": false
+    }
+  ]
+}
