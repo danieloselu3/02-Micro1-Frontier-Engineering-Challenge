@@ -1,0 +1,78 @@
+{
+  "case_id": "CASE-028",
+  "scenario": "necessity_met_tka",
+  "member": {
+    "member_id": "MBR-100111",
+    "first_name": "John",
+    "last_name": "Stokes",
+    "date_of_birth": "1961-06-26",
+    "sex": "M",
+    "plan_id": "PLN-PPO-GOLD",
+    "group_id": "GRP-1032",
+    "status": "active",
+    "effective_date": "2026-02-05",
+    "termination_date": null,
+    "premium_paid_through": "2026-12-31",
+    "state": "IN",
+    "enrolled_at": "2026-02-05"
+  },
+  "provider": {
+    "npi": "9655787558",
+    "name": "Morrow Specialty Clinic",
+    "specialty": "Orthopedic Surgery",
+    "network_tier": "in_network",
+    "license_state": "IN",
+    "license_expiry": "2027-06-30",
+    "contract_start": "2023-01-01",
+    "contract_end": null,
+    "sanctioned": false,
+    "credentialed_procedures": [
+      "72148",
+      "70553",
+      "74177",
+      "27447",
+      "29881",
+      "22551",
+      "64483",
+      "15823",
+      "19318",
+      "J9310",
+      "33533",
+      "99213",
+      "71046",
+      "80053",
+      "97110",
+      "45378"
+    ]
+  },
+  "procedure_code": "27447",
+  "diagnosis_codes": [
+    "M17.11"
+  ],
+  "date_of_service": "2026-08-14",
+  "units_requested": 1,
+  "clinical_narrative": "65-year-old with a five-year history of progressive right knee pain now\nrated 8/10 at rest and 9/10 with ambulation. The patient is unable to walk\nmore than one block and has stopped using stairs.\n\nConservative management over the past 14 months: supervised physical therapy\n(three separate courses, 36 visits total), naproxen 500 mg twice daily,\ntwo intra-articular corticosteroid injections (11/2025 and 03/2026) each\ngiving less than six weeks of relief, activity modification, and a cane.\n\nWeight-bearing radiographs of the right knee dated 07/14/2026 demonstrate\nbone-on-bone medial compartment narrowing with subchondral sclerosis and\nmarginal osteophytes, consistent with Kellgren-Lawrence grade 4\nosteoarthritis.\n\nBMI is 31.2. The patient has completed a preoperative medical evaluation and\nis cleared for surgery. Symptoms substantially limit activities of daily\nliving despite maximal non-operative management.\n",
+  "form_member_name": "John Stokes",
+  "form_member_id": "MBR-100111",
+  "form_provider_npi": "9655787558",
+  "form_date_of_service": "08/14/2026",
+  "label": {
+    "case_id": "CASE-028",
+    "verdict": "approved",
+    "governing_rule": "MP-ORT-001",
+    "rationale": "All arthroplasty criteria are documented, including grade 4 radiographic change and 14 months of failed conservative care. Cost exceeds the auto-release ceiling, so a reviewer signs.",
+    "scenario": "necessity_met_tka",
+    "is_adversarial": false,
+    "expected_fields": {
+      "member_name": "John Stokes",
+      "member_id": "MBR-100111",
+      "provider_npi": "9655787558",
+      "procedure_code": "27447",
+      "diagnosis_code": "M17.11",
+      "date_of_service": "08/14/2026"
+    },
+    "degradation": "photo",
+    "expected_missing_information": [],
+    "requires_human_review": true
+  }
+}

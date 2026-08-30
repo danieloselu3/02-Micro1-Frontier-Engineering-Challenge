@@ -1,0 +1,78 @@
+{
+  "case_id": "CASE-041",
+  "scenario": "cosmetic_purely_aesthetic",
+  "member": {
+    "member_id": "MBR-100132",
+    "first_name": "Terry",
+    "last_name": "Russell",
+    "date_of_birth": "1955-03-21",
+    "sex": "M",
+    "plan_id": "PLN-HMO-CORE",
+    "group_id": "GRP-1009",
+    "status": "active",
+    "effective_date": "2026-08-24",
+    "termination_date": null,
+    "premium_paid_through": "2026-12-31",
+    "state": "OH",
+    "enrolled_at": "2026-08-24"
+  },
+  "provider": {
+    "npi": "9643982834",
+    "name": "Taylor Imaging Partners",
+    "specialty": "Plastic Surgery",
+    "network_tier": "in_network",
+    "license_state": "OH",
+    "license_expiry": "2027-06-30",
+    "contract_start": "2023-01-01",
+    "contract_end": null,
+    "sanctioned": true,
+    "credentialed_procedures": [
+      "72148",
+      "70553",
+      "74177",
+      "27447",
+      "29881",
+      "22551",
+      "64483",
+      "15823",
+      "19318",
+      "J9310",
+      "33533",
+      "99213",
+      "71046",
+      "80053",
+      "97110",
+      "45378"
+    ]
+  },
+  "procedure_code": "15823",
+  "diagnosis_codes": [
+    "H02.401"
+  ],
+  "date_of_service": "2026-08-14",
+  "units_requested": 1,
+  "clinical_narrative": "71-year-old requesting upper eyelid surgery for a tired appearance. The\npatient is troubled by the look of the upper lids in photographs and would\nlike a more rested appearance before a family wedding.\n\nVisual fields are full to confrontation. No ptosis. Margin-to-reflex\ndistance 4 mm bilaterally. No functional complaint and no compensatory brow\nelevation.\n",
+  "form_member_name": "Terry Russell",
+  "form_member_id": "MBR-100132",
+  "form_provider_npi": "9643982834",
+  "form_date_of_service": "08/14/2026",
+  "label": {
+    "case_id": "CASE-041",
+    "verdict": "denied",
+    "governing_rule": "R4",
+    "rationale": "Cosmetic category excluded under the plan, and the record documents no functional impairment in any case.",
+    "scenario": "cosmetic_purely_aesthetic",
+    "is_adversarial": false,
+    "expected_fields": {
+      "member_name": "Terry Russell",
+      "member_id": "MBR-100132",
+      "provider_npi": "9643982834",
+      "procedure_code": "15823",
+      "diagnosis_code": "H02.401",
+      "date_of_service": "08/14/2026"
+    },
+    "degradation": "clean",
+    "expected_missing_information": [],
+    "requires_human_review": true
+  }
+}

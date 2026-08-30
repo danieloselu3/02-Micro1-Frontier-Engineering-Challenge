@@ -7,9 +7,12 @@ disagree, that is a finding worth reporting -- not a bug to paper over.
 
 from __future__ import annotations
 
+from datetime import date
+
 from pydantic import BaseModel, Field
 
 from packages.core.models import DegradationTier, Verdict
+from packages.core.records import Member, Provider
 
 
 class GoldLabel(BaseModel):
@@ -35,3 +38,29 @@ class GoldLabel(BaseModel):
     #: True when a correct system must route this to a human regardless of
     #: verdict -- denials, always-review procedures, unresolvable ambiguity.
     requires_human_review: bool = True
+
+
+class GeneratedCase(BaseModel):
+    """One evaluation case: the request, the records behind it, and the truth.
+
+    `form_*` fields are what is printed on the paper, which is deliberately
+    allowed to disagree with the database record -- a misspelled surname or a
+    smudged member id is the entity-resolution problem we want to measure.
+    """
+
+    case_id: str
+    scenario: str
+    member: Member
+    provider: Provider
+    procedure_code: str
+    diagnosis_codes: list[str]
+    date_of_service: date
+    units_requested: int = 1
+    clinical_narrative: str
+
+    form_member_name: str
+    form_member_id: str
+    form_provider_npi: str
+    form_date_of_service: str
+
+    label: GoldLabel

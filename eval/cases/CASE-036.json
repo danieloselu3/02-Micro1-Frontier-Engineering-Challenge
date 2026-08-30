@@ -1,0 +1,81 @@
+{
+  "case_id": "CASE-036",
+  "scenario": "necessity_no_evidence_tka",
+  "member": {
+    "member_id": "MBR-100215",
+    "first_name": "Robert",
+    "last_name": "Simpson",
+    "date_of_birth": "1958-07-27",
+    "sex": "M",
+    "plan_id": "PLN-PPO-GOLD",
+    "group_id": "GRP-1029",
+    "status": "active",
+    "effective_date": "2026-04-12",
+    "termination_date": null,
+    "premium_paid_through": "2026-12-31",
+    "state": "MI",
+    "enrolled_at": "2026-04-12"
+  },
+  "provider": {
+    "npi": "9312022243",
+    "name": "Baker Imaging Partners",
+    "specialty": "Orthopedic Surgery",
+    "network_tier": "in_network",
+    "license_state": "MI",
+    "license_expiry": "2027-06-30",
+    "contract_start": "2023-01-01",
+    "contract_end": null,
+    "sanctioned": false,
+    "credentialed_procedures": [
+      "72148",
+      "70553",
+      "74177",
+      "27447",
+      "29881",
+      "22551",
+      "64483",
+      "15823",
+      "19318",
+      "J9310",
+      "33533",
+      "99213",
+      "71046",
+      "80053",
+      "97110",
+      "45378"
+    ]
+  },
+  "procedure_code": "27447",
+  "diagnosis_codes": [
+    "M17.11"
+  ],
+  "date_of_service": "2026-08-14",
+  "units_requested": 1,
+  "clinical_narrative": "68-year-old with longstanding right knee osteoarthritis and increasing pain\nthat limits walking distance. Reports the knee \"gives way\" on uneven ground.\n\nExamination shows a moderate effusion, crepitus through range of motion, and\na 10-degree flexion contracture. Range of motion 10 to 105 degrees.\n\nThe patient wishes to proceed with total knee replacement.\n",
+  "form_member_name": "Robert Simpson",
+  "form_member_id": "MBR-100215",
+  "form_provider_npi": "9312022243",
+  "form_date_of_service": "08/14/2026",
+  "label": {
+    "case_id": "CASE-036",
+    "verdict": "pended",
+    "governing_rule": "MP-ORT-001",
+    "rationale": "No conservative management history and no weight-bearing radiographic grading are documented. Both are required and neither is contradicted.",
+    "scenario": "necessity_no_evidence_tka",
+    "is_adversarial": true,
+    "expected_fields": {
+      "member_name": "Robert Simpson",
+      "member_id": "MBR-100215",
+      "provider_npi": "9312022243",
+      "procedure_code": "27447",
+      "diagnosis_code": "M17.11",
+      "date_of_service": "08/14/2026"
+    },
+    "degradation": "photo",
+    "expected_missing_information": [
+      "Conservative management history with dates and outcomes",
+      "Weight-bearing radiographs with Kellgren-Lawrence grading"
+    ],
+    "requires_human_review": true
+  }
+}

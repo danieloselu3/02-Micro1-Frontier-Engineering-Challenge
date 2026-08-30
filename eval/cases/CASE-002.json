@@ -1,0 +1,78 @@
+{
+  "case_id": "CASE-002",
+  "scenario": "no_auth_required",
+  "member": {
+    "member_id": "MBR-100078",
+    "first_name": "Kevin",
+    "last_name": "Cole",
+    "date_of_birth": "1996-12-10",
+    "sex": "M",
+    "plan_id": "PLN-EPO-VALUE",
+    "group_id": "GRP-1028",
+    "status": "active",
+    "effective_date": "2025-07-12",
+    "termination_date": null,
+    "premium_paid_through": "2026-12-31",
+    "state": "MI",
+    "enrolled_at": "2025-07-12"
+  },
+  "provider": {
+    "npi": "9626608795",
+    "name": "Gibson Specialty Clinic",
+    "specialty": "Orthopedic Surgery",
+    "network_tier": "in_network",
+    "license_state": "PA",
+    "license_expiry": "2027-06-30",
+    "contract_start": "2023-01-01",
+    "contract_end": null,
+    "sanctioned": false,
+    "credentialed_procedures": [
+      "72148",
+      "70553",
+      "74177",
+      "27447",
+      "29881",
+      "22551",
+      "64483",
+      "15823",
+      "19318",
+      "J9310",
+      "33533",
+      "99213",
+      "71046",
+      "80053",
+      "97110",
+      "45378"
+    ]
+  },
+  "procedure_code": "97110",
+  "diagnosis_codes": [
+    "M54.50"
+  ],
+  "date_of_service": "2026-08-14",
+  "units_requested": 1,
+  "clinical_narrative": "Continuing outpatient physical therapy for low back pain, therapeutic\nexercise. Requesting authorization for a further block of visits.\n",
+  "form_member_name": "Kevin Cole",
+  "form_member_id": "MBR-100078",
+  "form_provider_npi": "9626608795",
+  "form_date_of_service": "08/14/2026",
+  "label": {
+    "case_id": "CASE-002",
+    "verdict": "no_auth_required",
+    "governing_rule": "R1",
+    "rationale": "CPT 97110 (Therapeutic exercise, each 15 minutes) does not require prior authorization under this plan. The provider may proceed; no authorization is issued because none was adjudicated.",
+    "scenario": "no_auth_required",
+    "is_adversarial": false,
+    "expected_fields": {
+      "member_name": "Kevin Cole",
+      "member_id": "MBR-100078",
+      "provider_npi": "9626608795",
+      "procedure_code": "97110",
+      "diagnosis_code": "M54.50",
+      "date_of_service": "08/14/2026"
+    },
+    "degradation": "scan",
+    "expected_missing_information": [],
+    "requires_human_review": false
+  }
+}

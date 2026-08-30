@@ -1,0 +1,78 @@
+{
+  "case_id": "CASE-016",
+  "scenario": "license_expired",
+  "member": {
+    "member_id": "MBR-100065",
+    "first_name": "Deborah",
+    "last_name": "Reeves",
+    "date_of_birth": "1974-03-23",
+    "sex": "F",
+    "plan_id": "PLN-EPO-VALUE",
+    "group_id": "GRP-1074",
+    "status": "active",
+    "effective_date": "2025-09-16",
+    "termination_date": null,
+    "premium_paid_through": "2026-12-31",
+    "state": "OH",
+    "enrolled_at": "2025-09-16"
+  },
+  "provider": {
+    "npi": "9381821973",
+    "name": "Gomez Specialty Clinic",
+    "specialty": "Orthopedic Surgery",
+    "network_tier": "in_network",
+    "license_state": "OH",
+    "license_expiry": "2026-06-15",
+    "contract_start": "2023-01-01",
+    "contract_end": null,
+    "sanctioned": false,
+    "credentialed_procedures": [
+      "72148",
+      "70553",
+      "74177",
+      "27447",
+      "29881",
+      "22551",
+      "64483",
+      "15823",
+      "19318",
+      "J9310",
+      "33533",
+      "99213",
+      "71046",
+      "80053",
+      "97110",
+      "45378"
+    ]
+  },
+  "procedure_code": "29881",
+  "diagnosis_codes": [
+    "S83.241A"
+  ],
+  "date_of_service": "2026-08-14",
+  "units_requested": 1,
+  "clinical_narrative": "Patient with persistent symptoms unresponsive to initial management.\nConservative treatment including physical therapy and anti-inflammatory\nmedication has been completed without adequate improvement. Examination and\nprior imaging support the requested service. Referred for further evaluation\nand management.\n",
+  "form_member_name": "Deborah Reeves",
+  "form_member_id": "MBR-100065",
+  "form_provider_npi": "9381821973",
+  "form_date_of_service": "08/14/2026",
+  "label": {
+    "case_id": "CASE-016",
+    "verdict": "denied",
+    "governing_rule": "R6",
+    "rationale": "Provider licence expired 06/15/2026, before the date of service.",
+    "scenario": "license_expired",
+    "is_adversarial": true,
+    "expected_fields": {
+      "member_name": "Deborah Reeves",
+      "member_id": "MBR-100065",
+      "provider_npi": "9381821973",
+      "procedure_code": "29881",
+      "diagnosis_code": "S83.241A",
+      "date_of_service": "08/14/2026"
+    },
+    "degradation": "photo",
+    "expected_missing_information": [],
+    "requires_human_review": true
+  }
+}
