@@ -15,6 +15,7 @@ not a bug to be quietly reconciled.
 from __future__ import annotations
 
 import random
+import zlib
 from collections.abc import Callable
 from datetime import date, timedelta
 from decimal import Decimal
@@ -22,6 +23,7 @@ from decimal import Decimal
 from data.generator import narratives as N
 from data.generator.population import PLAN_YEAR, Population
 from data.generator.reference import (
+    PLANS_BY_ID,
     PROCEDURES_BY_CODE,
     accumulator_for_procedure,
     age_range_for,
@@ -92,6 +94,8 @@ def _case(
     """
     member = _fit_member_age(ctx, member, procedure_code, dos)
     provider = _fit_provider_specialty(ctx, provider, procedure_code)
+    provider = _isolate_provider(ctx, provider)
+    member, provider = _normalize(ctx, member, provider, procedure_code, dos, governing_rule)
     narrative = narrative.replace("{age}", str(member.age_on(dos)))
 
     printed_name = form_name or member.full_name
@@ -159,9 +163,92 @@ def _fit_provider_specialty(
     allowed = specialties_for(code)
     if provider.specialty in allowed:
         return provider
-    updated = provider.model_copy(update={"specialty": ctx.rng.choice(allowed)})
-    ctx.pop.replace_provider(updated)
-    return updated
+    return provider.model_copy(update={"specialty": ctx.rng.choice(allowed)})
+
+
+def _isolate_provider(ctx: ScenarioContext, provider: Provider) -> Provider:
+    """Give this case its own provider record under a fresh NPI.
+
+    Providers are drawn from a shared pool, and several scenarios damage the
+    one they draw -- a sanction, an expired licence, an out-of-network tier.
+    Without isolation that damage leaks into every later case that happens to
+    draw the same provider, and the leak shows up as a denial on a rule the
+    case was never meant to exercise.
+    """
+    npi = f"9{zlib.crc32(ctx.case_id.encode()) % 10**9:09d}"
+    isolated = provider.model_copy(update={"npi": npi})
+    ctx.pop.providers.append(isolated)
+    return isolated
+
+
+def _normalize(
+    ctx: ScenarioContext,
+    member: Member,
+    provider: Provider,
+    code: str,
+    dos: date,
+    governing_rule: str,
+) -> tuple[Member, Provider]:
+    """Repair every condition except the one this case exists to test.
+
+    A scenario is only a clean experiment if exactly one thing is wrong. Left
+    to chance, a case built to test medical necessity lands on a member whose
+    waiting period has not elapsed, or a provider outside the plan's service
+    area, and gets denied on a contractual rule before the clinical question
+    is ever reached -- which would make the gold label wrong rather than the
+    system.
+
+    `governing_rule` names the rule the case is allowed to fail. Anything
+    starting with MP- is a medical-necessity case, so every rule is repaired.
+    """
+    intended = governing_rule if governing_rule.startswith("R") else None
+    plan = PLANS_BY_ID[member.plan_id]
+    proc = PROCEDURES_BY_CODE[code]
+
+    # R2 and R3 -- coverage active, and enrolled long enough ago.
+    if intended not in ("R2", "R3"):
+        enrolled = dos - timedelta(days=plan.waiting_period_days + 300)
+        member = member.model_copy(
+            update={
+                "status": MemberStatus.ACTIVE,
+                "enrolled_at": enrolled,
+                "effective_date": enrolled,
+                "termination_date": None,
+                "premium_paid_through": date(dos.year, 12, 31),
+            }
+        )
+        ctx.pop.replace_member(member)
+
+    # R5 -- provider inside the plan's service area.
+    if intended != "R5" and provider.license_state not in plan.covered_states:
+        provider = provider.model_copy(update={"license_state": plan.covered_states[0]})
+
+    # R6 -- provider contracted, licensed, unsanctioned, in network.
+    if intended != "R6":
+        provider = provider.model_copy(
+            update={
+                "network_tier": NetworkTier.IN_NETWORK,
+                "sanctioned": False,
+                "license_expiry": date(dos.year + 1, 6, 30),
+                "contract_start": date(dos.year - 3, 1, 1),
+                "contract_end": None,
+            }
+        )
+    ctx.pop.replace_provider(provider)
+
+    # R7 -- leave comfortably more benefit than the request consumes.
+    if intended != "R7":
+        category = accumulator_for_procedure(code)
+        acc = ctx.pop.accumulator(member.member_id, category)
+        headroom = proc.unit_cost * Decimal("2")
+        if acc.remaining < headroom:
+            ctx.pop.set_consumed(
+                member.member_id,
+                category,
+                max(Decimal("0"), acc.limit_amount - headroom),
+            )
+
+    return member, provider
 
 
 # ==========================================================================

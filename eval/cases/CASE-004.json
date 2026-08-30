@@ -17,11 +17,11 @@
     "enrolled_at": "2026-03-02"
   },
   "provider": {
-    "npi": "9466124144",
+    "npi": "9995034623",
     "name": "Adams Regional Medical Center",
     "specialty": "Orthopedic Surgery",
     "network_tier": "in_network",
-    "license_state": "IN",
+    "license_state": "OH",
     "license_expiry": "2027-06-30",
     "contract_start": "2023-01-01",
     "contract_end": null,
@@ -54,7 +54,7 @@
   "clinical_narrative": "Patient with persistent symptoms unresponsive to initial management.\nConservative treatment including physical therapy and anti-inflammatory\nmedication has been completed without adequate improvement. Examination and\nprior imaging support the requested service. Referred for further evaluation\nand management.\n",
   "form_member_name": "Holly Moore",
   "form_member_id": "MBR-100059",
-  "form_provider_npi": "9466124144",
+  "form_provider_npi": "9995034623",
   "form_date_of_service": "08/14/2026",
   "label": {
     "case_id": "CASE-004",
@@ -66,7 +66,7 @@
     "expected_fields": {
       "member_name": "Holly Moore",
       "member_id": "MBR-100059",
-      "provider_npi": "9466124144",
+      "provider_npi": "9995034623",
       "procedure_code": "72148",
       "diagnosis_code": "M54.16",
       "date_of_service": "08/14/2026"
