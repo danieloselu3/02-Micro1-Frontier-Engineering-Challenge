@@ -15,6 +15,7 @@ env/
 # Environment variables / secrets
 .env
 .env.*
+!.env.example
 *.key
 
 # IDE / OS
@@ -34,7 +35,9 @@ Thumbs.db
 .coverage
 htmlcov/
 
-# Data / outputs (adjust as the project grows)
-data/raw/
+# Generated artefacts. Rendered forms are large and rebuild deterministically
+# from a seed, so they stay out of git; the gold labels and the evaluation
+# reports they produce are committed, because every claim points at them.
+data/seeds/forms/
 outputs/
 *.sqlite3

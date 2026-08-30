@@ -1,4 +1,0 @@
-# Core dependencies for the Micro1 Frontier Engineering Challenge submission.
-# Add pinned versions as the baseline/advanced solutions take shape.
-
-python-dotenv
