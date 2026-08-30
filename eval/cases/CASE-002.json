@@ -10,18 +10,18 @@
     "plan_id": "PLN-EPO-VALUE",
     "group_id": "GRP-1028",
     "status": "active",
-    "effective_date": "2025-07-12",
+    "effective_date": "2025-09-18",
     "termination_date": null,
     "premium_paid_through": "2026-12-31",
     "state": "MI",
-    "enrolled_at": "2025-07-12"
+    "enrolled_at": "2025-09-18"
   },
   "provider": {
-    "npi": "9626608795",
+    "npi": "9541881034",
     "name": "Gibson Specialty Clinic",
     "specialty": "Orthopedic Surgery",
     "network_tier": "in_network",
-    "license_state": "PA",
+    "license_state": "OH",
     "license_expiry": "2027-06-30",
     "contract_start": "2023-01-01",
     "contract_end": null,
@@ -54,7 +54,7 @@
   "clinical_narrative": "Continuing outpatient physical therapy for low back pain, therapeutic\nexercise. Requesting authorization for a further block of visits.\n",
   "form_member_name": "Kevin Cole",
   "form_member_id": "MBR-100078",
-  "form_provider_npi": "9626608795",
+  "form_provider_npi": "9541881034",
   "form_date_of_service": "08/14/2026",
   "label": {
     "case_id": "CASE-002",
@@ -66,7 +66,7 @@
     "expected_fields": {
       "member_name": "Kevin Cole",
       "member_id": "MBR-100078",
-      "provider_npi": "9626608795",
+      "provider_npi": "9541881034",
       "procedure_code": "97110",
       "diagnosis_code": "M54.50",
       "date_of_service": "08/14/2026"

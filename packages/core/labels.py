@@ -39,6 +39,23 @@ class GoldLabel(BaseModel):
     #: verdict -- denials, always-review procedures, unresolvable ambiguity.
     requires_human_review: bool = True
 
+    @property
+    def requires_necessity_judgment(self) -> bool:
+        """True when the deterministic rules alone cannot reach this verdict.
+
+        Approvals always need one: nothing may be authorized without a
+        clinical assessment. Partial approvals need one too -- the benefit
+        cap only applies to a request that was going to be approved, so a
+        case capped by R7 is still gated on medical necessity first.
+
+        Everything else -- hard-stop denials, coding pends, the no-auth fast
+        path -- is settled by the rules with no model in the loop.
+        """
+        return (
+            self.verdict in (Verdict.APPROVED, Verdict.PARTIALLY_APPROVED)
+            or self.governing_rule.startswith("MP-")
+        )
+
 
 class GeneratedCase(BaseModel):
     """One evaluation case: the request, the records behind it, and the truth.
