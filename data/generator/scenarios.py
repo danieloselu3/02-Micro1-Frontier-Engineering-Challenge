@@ -413,7 +413,6 @@ def excluded_cosmetic(ctx: ScenarioContext) -> GeneratedCase:
 def out_of_area(ctx: ScenarioContext) -> GeneratedCase:
     member = ctx.pop.member_on_plan("PLN-HMO-CORE", ctx.used_members)
     provider = ctx.pop.any_provider().model_copy(update={"license_state": "PA"})
-    ctx.pop.replace_provider(provider)
     return _case(
         ctx,
         scenario="out_of_area",
@@ -442,7 +441,6 @@ def out_of_network(ctx: ScenarioContext) -> GeneratedCase:
     provider = ctx.pop.any_provider().model_copy(
         update={"network_tier": NetworkTier.OUT_OF_NETWORK, "license_state": member.state}
     )
-    ctx.pop.replace_provider(provider)
     return _case(
         ctx,
         scenario="out_of_network",
@@ -466,7 +464,6 @@ def provider_sanctioned(ctx: ScenarioContext) -> GeneratedCase:
     provider = ctx.pop.any_provider().model_copy(
         update={"sanctioned": True, "license_state": member.state}
     )
-    ctx.pop.replace_provider(provider)
     return _case(
         ctx,
         scenario="provider_sanctioned",
@@ -487,7 +484,6 @@ def license_expired(ctx: ScenarioContext) -> GeneratedCase:
     provider = ctx.pop.any_provider().model_copy(
         update={"license_expiry": DOS - timedelta(days=60), "license_state": member.state}
     )
-    ctx.pop.replace_provider(provider)
     return _case(
         ctx,
         scenario="license_expired",
@@ -575,7 +571,6 @@ def limit_partial(ctx: ScenarioContext) -> GeneratedCase:
 def duplicate_authorization(ctx: ScenarioContext) -> GeneratedCase:
     member = ctx.pop.any_member(ctx.used_members)
     provider = ctx.pop.any_provider().model_copy(update={"license_state": member.state})
-    ctx.pop.replace_provider(provider)
     existing = PriorAuthorization(
         auth_id=f"AUTH-{ctx.case_id}",
         member_id=member.member_id,

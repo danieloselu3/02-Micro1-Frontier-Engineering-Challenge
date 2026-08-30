@@ -1,0 +1,8 @@
+{
+  "stage": "verify",
+  "model": "claude-haiku-4-5-20251001",
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"severity\": \"blocking\",\n      \"claim\": \"Diagnosis J06.9 (Acute upper respiratory infection, unspecified) does not support CPT 72148 (MRI lumbar spine without contrast).\",\n      \"problem\": \"Rule [R9] evidence shows submitted_diagnoses=J06.9 but supporting_diagnoses=M54.50, M54.51, M51.26, M54.16. The rationale cites only the submitted diagnosis and does not acknowledge that supporting diagnoses exist in the record. The clinical narrative contains no mention of J06.9 or respiratory infection; it describes musculoskeletal symptoms. The claim that this is a 'coding error' is unsupported\u2014the supporting diagnoses (M54.x and M51.x codes for back pain and intervertebral disc disorders) are clinically coherent with lumbar spine MRI.\"\n    }\n  ]\n}\n```",
+  "input_tokens": 2364,
+  "output_tokens": 227,
+  "seconds": 3.484
+}

@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\":\"no_auth_required\",\"governing_rule\":\"R8\",\"reason\":\"An active authorization (AUTH-CASE-021) already covers CPT 70553 for this member for the period 2026-07-25 through 2026-09-23, which includes the requested date of service (08/14/2026). No new authorization is required for this service.\",\"missing_information\":[]}",
+  "input_tokens": 4299,
+  "output_tokens": 262,
+  "seconds": 4.922
+}

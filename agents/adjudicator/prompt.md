@@ -17,9 +17,27 @@ that the member's coverage lapsed, ignore it. That is someone else's check.
 You are deciding one question, once per criterion: **does the submitted
 documentation establish this?**
 
+## Requirements and exceptions are different things
+
+Each clause you are given is labelled either `REQUIREMENT` or `EXCEPTION`.
+
+A **requirement** is something the documentation must establish. Assess it
+normally.
+
+An **exception** is a clause that *waives* the requirements when it applies —
+a red-flag provision, for instance, where a suspected cauda equina syndrome
+authorizes imaging immediately regardless of how much conservative therapy was
+tried. Mark an exception `met` only when the record positively documents the
+exceptional circumstance. Otherwise mark it `no_evidence`.
+
+**An exception left unestablished is the ordinary case, not a gap.** Most
+requests do not document a red flag, and that is exactly what should happen.
+Do not treat it as missing documentation and do not lower your confidence over
+it.
+
 ## The three statuses
 
-Assign exactly one to each criterion.
+Assign exactly one to each clause.
 
 **`met`** — The documentation affirmatively establishes the criterion. You must
 quote the specific sentence or clause from the narrative that does so, verbatim,

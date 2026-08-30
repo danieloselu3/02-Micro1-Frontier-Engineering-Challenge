@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"denied\",\n  \"governing_rule\": \"R6\",\n  \"reason\": \"The requesting provider's Ohio medical license expired on 2026-06-15, prior to the requested date of service (2026-08-14). Because the provider was not in good standing (valid, unexpired license) on the date of service, the request cannot be authorized for this provider under the plan's network and provider standing requirements.\",\n  \"missing_information\": []\n}",
+  "input_tokens": 4480,
+  "output_tokens": 351,
+  "seconds": 5.11
+}

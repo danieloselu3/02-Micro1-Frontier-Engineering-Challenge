@@ -1,0 +1,8 @@
+{
+  "stage": "verify",
+  "model": "claude-haiku-4-5-20251001",
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"severity\": \"blocking\",\n      \"claim\": \"the policy explicitly treats as insufficient \u2014 there is no pending surgical, neurosurgical, or interventional plan tied to the result\",\n      \"problem\": \"This characterizes the policy's language, but MP-IMG-001#4 does not use the word 'explicitly' and does not state that the absence of a plan makes a request insufficient on its own. The clause says imaging requested 'solely for reassurance' or where 'management will not change' does not satisfy the criterion. The rationale has not established from the narrative that management will not change \u2014 only that no plan is currently documented. These are different conclusions.\"\n    }\n  ]\n}\n```",
+  "input_tokens": 2352,
+  "output_tokens": 172,
+  "seconds": 2.969
+}

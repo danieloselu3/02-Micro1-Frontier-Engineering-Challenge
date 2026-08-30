@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block title %}Determination letter{% endblock %}
+
+{% block content %}
+
+<div class="no-print" style="max-width:780px;margin:0 auto 14px;display:flex;gap:14px;align-items:baseline">
+  <a href="/case/{{ det.determination_id }}">&larr; Back to the case</a>
+  <span class="spacer" style="margin-left:auto"></span>
+  <button onclick="window.print()">Print</button>
+</div>
+
+<div class="letter">
+
+  <div class="masthead">
+    <div class="org">
+      Meridian Health Plan
+      <small>Utilization Management</small>
+    </div>
+    <div class="meta">
+      {{ today.strftime('%d %B %Y') }}<br>
+      Ref {{ det.determination_id }}
+    </div>
+  </div>
+
+  <h1>Notice of prior authorization determination</h1>
+
+  <dl class="rec">
+    {% if member %}
+    <dt>Member</dt><dd>{{ member.first_name }} {{ member.last_name }}</dd>
+    <dt>Member ID</dt><dd class="mono">{{ member.member_id }}</dd>
+    <dt>Date of birth</dt><dd>{{ member.date_of_birth.strftime('%m/%d/%Y') }}</dd>
+    <dt>Plan</dt><dd class="mono">{{ member.plan_id }}</dd>
+    {% endif %}
+    <dt>Reference</dt><dd class="mono">{{ det.submission_id }}</dd>
+  </dl>
+
+  <div class="determination">
+    <div class="head">
+      <span class="pill v-{{ det.verdict }}">{{ det.verdict.replace('_',' ') }}</span>
+      <span class="tag">{{ det.governing_rule }}</span>
+    </div>
+    <p style="margin-bottom:0">{{ det.reason }}</p>
+    {# Member liability applies only where the benefit was capped below the
+       requested amount. On a full approval there is nothing above the
+       approved figure, and saying otherwise would alarm the member over a
+       cost share that does not exist. #}
+    {% if det.approved_amount and det.verdict == 'partially_approved' %}
+    <p style="margin:11px 0 0"><strong>Approved to {{ det.approved_amount | money }}</strong>,
+    the balance remaining in the applicable benefit category. The member is
+    responsible for charges above this amount.</p>
+    {% elif det.approved_amount %}
+    <p style="margin:11px 0 0"><strong>Authorized amount: {{ det.approved_amount | money }}.</strong>
+    Payment remains subject to the member's eligibility and benefits at the time
+    of service.</p>
+    {% endif %}
+  </div>
+
+  {% if det.verdict == 'no_auth_required' %}
+  <p>
+    This service does not require prior authorization under the member's plan.
+    You may proceed without an authorization number. <strong>This notice is not
+    an authorization</strong> and does not constitute a determination of medical
+    necessity or a guarantee of payment; the claim remains subject to the
+    member's eligibility and benefits at the time of service.
+  </p>
+  {% endif %}
+
+  {% if det.missing_information %}
+  <p>Before this request can be decided, please submit the following:</p>
+  <ul>
+    {% for m in det.missing_information %}<li>{{ m }}</li>{% endfor %}
+  </ul>
+  <p>
+    This is a request for information, not a denial. On receipt of the above the
+    request will be re-reviewed without a new submission.
+  </p>
+  {% endif %}
+
+  {% set clauses = p.retrieved_clauses or [] %}
+  {% set necessity = p.necessity %}
+  {% if necessity and necessity.assessments %}
+  <p><strong>Criteria applied</strong></p>
+  <ul>
+    {% for a in necessity.assessments %}
+    <li>
+      <span class="mono">{{ a.clause_id }}</span> &mdash;
+      {{ a.status.replace('_', ' ') }}. {{ a.rationale }}
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if review %}
+  <div class="sig">
+    <div class="name">{{ review.reviewer_name }}</div>
+    <div class="cred">{{ review.credentials }}</div>
+    <div class="cred">
+      Reviewed {{ review.acted_at.strftime('%d %B %Y') }}
+    </div>
+  </div>
+  {% else %}
+  <div class="sig">
+    <div class="cred">
+      Issued automatically. No authorization was adjudicated and no clinical
+      determination was made, so no clinician signature is required.
+    </div>
+  </div>
+  {% endif %}
+
+  {% if det.verdict in ('denied', 'partially_approved') %}
+  <div class="appeal">
+    <h3>Your right to appeal</h3>
+    <p>
+      The member, or the member's authorized representative, may appeal this
+      determination within 180 days of receiving this notice. Appeals are
+      reviewed by a clinician who was not involved in this decision.
+    </p>
+    <p style="margin-bottom:0">
+      Expedited review is available where the standard timeframe would
+      seriously jeopardize the member's life, health, or ability to regain
+      maximum function. To request an appeal, contact Utilization Management
+      at (614) 555-0142.
+    </p>
+  </div>
+  {% endif %}
+
+</div>
+
+{% endblock %}

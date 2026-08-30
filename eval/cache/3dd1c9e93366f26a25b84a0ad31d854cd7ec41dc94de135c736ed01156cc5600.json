@@ -1,0 +1,8 @@
+{
+  "stage": "extract_reread",
+  "model": "claude-sonnet-5",
+  "text": "```json\n{\n  \"fields\": {\n    \"plan\": {\n      \"value\": \"PLN-HMO-CORE\",\n      \"confidence\": 0.55,\n      \"bbox\": {\"x\": 0.10, \"y\": 0.293, \"width\": 0.28, \"height\": 0.022}\n    }\n  }\n}\n```",
+  "input_tokens": 6202,
+  "output_tokens": 272,
+  "seconds": 4.562
+}

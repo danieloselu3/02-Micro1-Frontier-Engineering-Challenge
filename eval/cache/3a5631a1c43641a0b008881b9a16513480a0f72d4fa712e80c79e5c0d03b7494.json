@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"pended\",\n  \"governing_rule\": \"MP-IMG-003\",\n  \"reason\": \"The clinical justification submitted is generic boilerplate (referencing physical therapy and anti-inflammatory medication, which are not standard workup for abdominal pain) and does not document the specific objective finding on examination, laboratory testing, or prior imaging required to support CT abdomen/pelvis with contrast for unspecified abdominal pain, nor does it document completed laboratory evaluation for a chronic, non-specific presentation as required by policy MP-IMG-003. Additional clinical detail is needed before a medical necessity determination can be made.\",\n  \"missing_information\": [\n    \"Specific objective findings from physical examination relevant to the abdominal pain\",\n    \"Laboratory test results (e.g., CBC, metabolic panel, urinalysis, LFTs) performed as part of initial evaluation\",\n    \"Report/findings from any prior imaging referenced\",\n    \"Duration and character of symptoms (acute vs. chronic) and clinical rationale specific to abdominal pain rather than generic musculoskeletal conservative treatment\"\n  ]\n}",
+  "input_tokens": 4238,
+  "output_tokens": 1018,
+  "seconds": 11.125
+}

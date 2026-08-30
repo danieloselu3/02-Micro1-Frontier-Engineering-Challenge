@@ -134,19 +134,37 @@ class ClaimsRepository:
 
         # Fall back to name plus date of birth. This is the path the
         # handwritten-id case has to take, and it must not guess the digit.
+        #
+        # A unique hit on surname *and* exact date of birth is strong
+        # evidence -- two independent identifiers agreeing, with no other
+        # member in the book matching both. It is arguably stronger than an
+        # id read in isolation, because a transposed digit lands silently on
+        # a real and entirely different person whereas this cannot.
         if name and dob:
             parts = name.strip().split()
             last = parts[-1] if parts else ""
+            first = parts[0] if len(parts) > 1 else None
             rows = self._all(
                 """SELECT * FROM members
                    WHERE date_of_birth = %s AND lower(last_name) = lower(%s)""",
                 (dob, last),
             )
             if len(rows) == 1:
-                return Member(**rows[0]), 0.9, ambiguities
+                found = Member(**rows[0])
+                if first and first.casefold() == found.first_name.casefold():
+                    score = 0.97  # both names and the date of birth agree
+                else:
+                    score = 0.93
+                    if first:
+                        ambiguities.append(
+                            f"Given name on the form is '{first}' against record "
+                            f"'{found.first_name}'; surname and date of birth match."
+                        )
+                return found, score, ambiguities
             if len(rows) > 1:
                 ambiguities.append(
-                    f"{len(rows)} members share that surname and date of birth."
+                    f"{len(rows)} members share that surname and date of birth; "
+                    "identity cannot be resolved without a legible member id."
                 )
                 return None, 0.0, ambiguities
 
@@ -191,12 +209,12 @@ class ClaimsRepository:
 
     # -- plumbing ----------------------------------------------------------
 
-    def _one(self, sql: str, params: tuple) -> dict | None:
+    def _one(self, sql: str, params: tuple = ()) -> dict | None:
         with self.conn.cursor() as cur:
             cur.execute(sql, params)
             return cur.fetchone()
 
-    def _all(self, sql: str, params: tuple) -> list[dict]:
+    def _all(self, sql: str, params: tuple = ()) -> list[dict]:
         with self.conn.cursor() as cur:
             cur.execute(sql, params)
             return cur.fetchall()

@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"denied\",\n  \"governing_rule\": \"R4\",\n  \"reason\": \"Blepharoplasty (CPT 15823) falls under the 'cosmetic' procedure category, which is explicitly excluded from coverage under the Meridian HMO Core plan. The clinical documentation also confirms a cosmetic indication (patient reports tired appearance, no functional complaint, full visual fields, and margin-to-reflex distance of 4mm bilaterally, which does not meet the functional/anatomic criteria for medically necessary blepharoplasty under MP-COS-001). Because the benefit category itself is excluded, the request cannot be authorized regardless of clinical findings.\",\n  \"missing_information\": []\n}",
+  "input_tokens": 4457,
+  "output_tokens": 385,
+  "seconds": 5.0
+}

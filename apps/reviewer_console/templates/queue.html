@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}Work queue{% endblock %}
+{% block nav_queue %}on{% endblock %}
+
+{% block content %}
+
+<div class="stats">
+  <div class="stat">
+    <div class="label">Awaiting review</div>
+    <div class="value">{{ stats.pending or 0 }}</div>
+  </div>
+  <div class="stat">
+    <div class="label">Released without review</div>
+    <div class="value">{{ stats.auto_released or 0 }} <small>of {{ stats.total or 0 }}</small></div>
+  </div>
+  <div class="stat">
+    <div class="label">Mean processing time</div>
+    <div class="value">{{ "%.1f"|format(stats.mean_seconds or 0) }}<small>s</small></div>
+  </div>
+  <div class="stat">
+    <div class="label">Model cost, all cases</div>
+    <div class="value">{{ stats.total_cost | money }}</div>
+  </div>
+</div>
+
+<div class="panel">
+  <header>
+    <h2>Awaiting clinical review</h2>
+    <span class="count">{{ pending|length }} case{{ '' if pending|length == 1 else 's' }}</span>
+    <span class="spacer"></span>
+    <span class="count muted">Denials first, then partials, then pends</span>
+  </header>
+
+  {% if pending %}
+  <table>
+    <thead>
+      <tr>
+        <th>Submission</th>
+        <th>Recommendation</th>
+        <th>Basis</th>
+        <th>Why it needs you</th>
+        <th class="num">Cost</th>
+        <th class="num">Waiting</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in pending %}
+      <tr class="row" onclick="location.href='/case/{{ row.determination_id }}'">
+        <td class="tight">
+          <a href="/case/{{ row.determination_id }}" class="mono">{{ row.submission_id }}</a>
+          <div class="small muted">{{ row.channel or 'fax' }} &middot; {{ row.degradation or 'clean' }}</div>
+        </td>
+        <td class="tight"><span class="pill v-{{ row.verdict }}">{{ row.verdict.replace('_',' ') }}</span></td>
+        <td class="tight"><span class="tag">{{ row.governing_rule }}</span></td>
+        <td class="small">
+          {% set reasons = row.escalation_reasons or [] %}
+          {% if reasons %}
+            {{ reasons[0] }}
+            {% if reasons|length > 1 %}
+              <span class="muted">+{{ reasons|length - 1 }} more</span>
+            {% endif %}
+          {% else %}
+            <span class="muted">—</span>
+          {% endif %}
+        </td>
+        <td class="num">{{ "%.4f"|format(row.model_cost_usd|float) }}</td>
+        <td class="num">{{ row.created_at | ago }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty-state">
+    <strong>The queue is clear.</strong>
+    Nothing is waiting on a clinician.
+  </div>
+  {% endif %}
+</div>
+
+<div class="panel">
+  <header>
+    <h2>Recently completed</h2>
+    <span class="count">{{ completed|length }}</span>
+  </header>
+
+  {% if completed %}
+  <table>
+    <thead>
+      <tr>
+        <th>Submission</th>
+        <th>Verdict</th>
+        <th>Basis</th>
+        <th>Signed by</th>
+        <th class="num">When</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in completed %}
+      <tr class="row" onclick="location.href='/case/{{ row.determination_id }}'">
+        <td class="tight"><a href="/case/{{ row.determination_id }}" class="mono">{{ row.submission_id }}</a></td>
+        <td class="tight"><span class="pill v-{{ row.verdict }}">{{ row.verdict.replace('_',' ') }}</span></td>
+        <td class="tight"><span class="tag">{{ row.governing_rule }}</span></td>
+        <td class="small">
+          {% if row.reviewer_name %}
+            {{ row.reviewer_name }}<span class="muted">, {{ row.credentials }}</span>
+            {% if row.decision and row.decision != 'confirm' %}
+              <span class="tag">{{ row.decision }}</span>
+            {% endif %}
+          {% else %}
+            <span class="muted">Released without review — no authorization was adjudicated</span>
+          {% endif %}
+        </td>
+        <td class="num">{{ (row.acted_at or row.created_at) | ago }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty-state">Nothing completed yet.</div>
+  {% endif %}
+</div>
+
+{% endblock %}

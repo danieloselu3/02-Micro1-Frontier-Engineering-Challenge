@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\":\"no_auth_required\",\"governing_rule\":\"R1\",\"reason\":\"CPT 97110 (therapeutic exercise) is a physical therapy service that does not require prior authorization under the Meridian EPO Value plan. The member is active, out of the waiting period, the provider is in-network and in good standing, the diagnosis supports the service, and sufficient outpatient benefit remains, so no PA determination is needed for this code.\",\"missing_information\":[]}",
+  "input_tokens": 4161,
+  "output_tokens": 270,
+  "seconds": 4.047
+}

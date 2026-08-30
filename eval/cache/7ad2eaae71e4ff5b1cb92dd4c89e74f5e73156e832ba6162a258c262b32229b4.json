@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\":\"approved\",\"governing_rule\":\"MP-IMG-001\",\"reason\":\"Member is eligible with active coverage, no waiting period, and the request is within a covered category. Taylor Imaging Partners is in-network, appropriately licensed in Michigan, and not sanctioned. Sufficient imaging benefit remains ($4,800 remaining vs. $1,450 cost) and no prior authorization already exists for this service. The submitted diagnosis (M54.16, lumbar radiculopathy) supports CPT 72148. Clinically, the documentation satisfies all four criteria under MP-IMG-001: an 8-week trial of supervised physical therapy and NSAID/muscle relaxant therapy without improvement (Criterion 1); objective neurologic findings including diminished patellar reflex, L4 dermatomal sensory loss, 4/5 ankle dorsiflexion weakness, and a positive straight leg raise at 40 degrees (Criterion 2); prior plain radiographs performed 07/30/2026 showing L4-L5 disc space narrowing (Criterion 3); and a clearly stated impact on management via pending neurosurgical consultation to determine candidacy for surgical decompression (Criterion 4). The request is approved.\",\"missing_information\":[]}",
+  "input_tokens": 5040,
+  "output_tokens": 734,
+  "seconds": 8.125
+}

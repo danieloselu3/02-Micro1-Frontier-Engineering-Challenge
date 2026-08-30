@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\":\"denied\",\"governing_rule\":\"R2\",\"reason\":\"The member's coverage status is currently suspended as of the date of service (08/14/2026). Prior authorization cannot be approved while the member's coverage is not active. Please contact Meridian Health Plan member services to resolve the suspension before resubmitting this request.\",\"missing_information\":[]}",
+  "input_tokens": 4371,
+  "output_tokens": 117,
+  "seconds": 2.953
+}

@@ -41,3 +41,10 @@ htmlcov/
 data/seeds/forms/
 outputs/
 *.sqlite3
+.previews/
+
+# stray server logs from local runs
+c.out
+c.err
+console.out
+console.err

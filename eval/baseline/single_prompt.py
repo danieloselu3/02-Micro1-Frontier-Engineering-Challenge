@@ -17,6 +17,14 @@ and ask for an answer.
 Keeping the information equal is what makes the comparison mean something.
 Any difference in the results is attributable to how the work was decomposed,
 not to one system having been shown more than the other.
+
+It is also given the same answer vocabulary. The first recorded run left the
+`governing_rule` field free-form, and the baseline answered substantively
+correctly in prose -- "coverage terminated", "PLN-HMO-CORE
+waiting_period_days" -- while scoring 0% on reason accuracy purely because it
+did not guess the rule identifiers the grader compares against. That measured
+formatting compliance, not reasoning, and would have overstated the
+improvement considerably. The rule catalogue below fixes that.
 """
 
 from __future__ import annotations
@@ -51,13 +59,30 @@ Return a single JSON object and nothing else:
 
 {
   "verdict": "approved | partially_approved | denied | pended | no_auth_required",
-  "governing_rule": "the single rule or policy clause id that decided this",
+  "governing_rule": "the identifier of the single check that decided this",
   "reason": "the explanation a reviewer and the member would read",
   "missing_information": ["what to request, if the verdict is pended"]
 }
 
 Use "no_auth_required" when the procedure does not require prior authorization
 under this plan. Use "pended" when you need something before you can decide.
+
+For "governing_rule", give exactly one identifier from this catalogue -- the
+single check that actually decided the case, not a list:
+
+  R1  the procedure does not require prior authorization
+  R2  member eligibility: coverage inactive, terminated, or suspended
+  R3  the plan's waiting period had not elapsed
+  R4  the benefit category is excluded under the plan
+  R5  the provider is outside the plan's service area
+  R6  provider standing: sanctioned, unlicensed, uncontracted, or out of network
+  R7  the benefit accumulator has insufficient balance remaining
+  R8  an active authorization already covers this procedure
+  R9  the diagnosis does not support the procedure code
+
+If none of the above decided it and the case turned on the clinical
+documentation, give the medical policy document id instead -- for example
+"MP-IMG-001". Use the document id alone, without a clause suffix.
 """
 
 
@@ -97,7 +122,11 @@ def run_baseline(
             }
         ],
         ledger=ledger,
-        max_tokens=2000,
+        # The first run capped this at 2000 and truncated 3 of 49 responses
+        # mid-object, which the harness then scored as failures. Those were
+        # the harness's fault, not the baseline's. Sized with headroom now:
+        # the longest untruncated baseline response was well under half this.
+        max_tokens=8000,
     )
 
     try:

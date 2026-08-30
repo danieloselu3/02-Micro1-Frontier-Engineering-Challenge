@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\":\"denied\",\"governing_rule\":\"R2\",\"reason\":\"The member's coverage under plan PLN-HMO-CORE was terminated effective 2026-07-31, prior to the requested date of service on 2026-08-14. Because the member had no active coverage on the date of service, the requested MRI lumbar spine cannot be authorized regardless of clinical documentation.\",\"missing_information\":[]}",
+  "input_tokens": 5349,
+  "output_tokens": 187,
+  "seconds": 4.5
+}

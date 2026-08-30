@@ -1,0 +1,8 @@
+{
+  "stage": "verify",
+  "model": "claude-haiku-4-5-20251001",
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"severity\": \"blocking\",\n      \"claim\": \"The record does not address 3 of the 3 criteria in MP-ONC-001.\",\n      \"problem\": \"The medical necessity assessment supplied marks all three criteria as NO_EVIDENCE, which means they are unaddressed. However, the rationale should state this explicitly rather than asserting it as a bare fact. More critically, the rationale then states 'Nothing in the documentation contradicts them, so the request is returned for the missing information rather than denied.' This is inconsistent with the policy: MP-ONC-001 requires affirmative satisfaction of three criteria for authorization. Unaddressed criteria cannot be cured by mere absence of contradiction. The determination logic appears inverted\u2014the case should be denied for failure to meet medical necessity, not returned for missing information.\"\n    }\n  ]\n}\n```",
+  "input_tokens": 1776,
+  "output_tokens": 207,
+  "seconds": 3.484
+}

@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\":\"approved\",\"governing_rule\":\"MP-IMG-001\",\"reason\":\"The member is eligible, the provider is in-network and in good standing, imaging benefit has sufficient remaining balance, no existing authorization conflicts, and the diagnosis (M54.16) supports the requested MRI. Clinical documentation meets all four required criteria under MP-IMG-001: an 8-week trial of supervised physical therapy and NSAID/muscle relaxant use with no improvement (Criterion 1), objective neurologic findings including diminished patellar reflex, L4 dermatomal sensory loss, 4/5 ankle dorsiflexion weakness, and positive straight leg raise (Criterion 2), prior plain radiographs showing disc space narrowing at L4-L5 (Criterion 3), and a clearly stated impact on management via pending neurosurgical consultation to determine surgical candidacy (Criterion 4). The request for MRI lumbar spine without contrast (CPT 72148) is approved.\",\"missing_information\":[]}",
+  "input_tokens": 5140,
+  "output_tokens": 594,
+  "seconds": 6.906
+}

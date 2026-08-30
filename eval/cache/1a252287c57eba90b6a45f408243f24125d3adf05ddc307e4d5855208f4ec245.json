@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"denied\",\n  \"governing_rule\": \"R3\",\n  \"reason\": \"The member's coverage became effective 2026-07-15, and the plan imposes a 90-day waiting period before benefits are payable. The requested date of service, 2026-08-14, falls only 30 days into the coverage period, well before the waiting period ends on approximately 2026-10-13. Because the waiting period had not elapsed on the date of service, the requested total knee arthroplasty (CPT 27447) cannot be authorized, regardless of the clinical documentation supporting medical necessity.\",\n  \"missing_information\": []\n}",
+  "input_tokens": 3700,
+  "output_tokens": 385,
+  "seconds": 5.188
+}

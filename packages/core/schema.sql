@@ -167,6 +167,9 @@ CREATE TABLE policy_chunks (
     clause_id   TEXT PRIMARY KEY,
     document_id TEXT NOT NULL REFERENCES policy_documents(document_id),
     ordinal     INT  NOT NULL,
+    -- criterion | exception | scope | note.
+    -- Only 'criterion' rows are things the documentation must establish.
+    role        TEXT NOT NULL DEFAULT 'criterion',
     text        TEXT NOT NULL,
     embedding   vector(1024)
 );

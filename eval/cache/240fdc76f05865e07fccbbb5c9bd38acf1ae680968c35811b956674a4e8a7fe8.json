@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"approved\",\n  \"governing_rule\": \"MP-COS-001\",\n  \"reason\": \"Ms. Franklin's request for upper eyelid blepharoplasty (CPT 15823) meets all functional/reconstructive criteria under policy MP-COS-001: documented superior visual field deficit of 28 degrees (Criterion 1), 16-degree improvement with lid elevation confirming lid-attributable cause (Criterion 2), margin-to-reflex distance of 1.5 mm (Criterion 3), and documented functional impairment with reading/driving difficulty and compensatory brow strain/headache (Criterion 4). Because the procedure is medically necessary rather than purely cosmetic, it is not subject to the plan's cosmetic exclusion. Member eligibility, provider network status, diagnosis-procedure match, and benefit accumulator balance are all in order, and no existing authorization conflicts with this request.\",\n  \"missing_information\": []\n}",
+  "input_tokens": 4625,
+  "output_tokens": 894,
+  "seconds": 11.672
+}

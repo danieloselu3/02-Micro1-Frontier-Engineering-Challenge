@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\":\"denied\",\"governing_rule\":\"R2\",\"reason\":\"The member's coverage under PLN-PPO-GOLD was terminated effective 07/31/2026. The requested date of service, 08/14/2026, falls after the termination date, so the member had no active coverage on the date the service would be rendered. The request is denied on eligibility grounds regardless of the clinical documentation submitted.\",\"missing_information\":[]}",
+  "input_tokens": 5053,
+  "output_tokens": 212,
+  "seconds": 3.578
+}

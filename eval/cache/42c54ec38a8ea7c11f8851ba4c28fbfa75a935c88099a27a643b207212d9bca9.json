@@ -1,0 +1,8 @@
+{
+  "stage": "extract_reread",
+  "model": "claude-sonnet-5",
+  "text": "```json\n{\n  \"fields\": {\n    \"procedure_code\": {\"value\": \"72148\", \"confidence\": 0.95, \"bbox\": {\"x\": 0.10, \"y\": 0.518, \"width\": 0.12, \"height\": 0.02}},\n    \"provider_npi\": {\"value\": \"9517389566\", \"confidence\": 0.9, \"bbox\": {\"x\": 0.50, \"y\": 0.388, \"width\": 0.18, \"height\": 0.02}}\n  }\n}\n```",
+  "input_tokens": 6212,
+  "output_tokens": 415,
+  "seconds": 5.906
+}

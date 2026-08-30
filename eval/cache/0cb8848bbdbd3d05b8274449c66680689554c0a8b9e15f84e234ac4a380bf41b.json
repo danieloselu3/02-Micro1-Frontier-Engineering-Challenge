@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"pended\",\n  \"governing_rule\": \"MP-ONC-001\",\n  \"reason\": \"Member eligibility, network status, benefit category, accumulator balance, and diagnosis support for rituximab (C83.30) are all satisfactory, and no conflicting authorization exists. However, the clinical justification submitted is generic template language (referencing physical therapy, anti-inflammatory medication, and imaging) and does not address the oncology-specific requirements of policy MP-ONC-001: the planned rituximab regimen, dose/schedule, and cycle number (Criterion 2), or documentation of baseline Hepatitis B surface antigen/core antibody screening prior to initiation (Criterion 3). Additional clinical information is needed before a determination can be made.\",\n  \"missing_information\": [\n    \"Documentation of the specific rituximab treatment regimen, planned dose, schedule, and cycle number consistent with an accepted protocol for diffuse large B-cell lymphoma\",\n    \"Results of Hepatitis B surface antigen and core antibody screening performed prior to initiating rituximab\"\n  ]\n}",
+  "input_tokens": 3423,
+  "output_tokens": 725,
+  "seconds": 8.093
+}

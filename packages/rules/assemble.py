@@ -160,6 +160,27 @@ def _decide(
             None,
         )
 
+    # A documented exception -- a red flag -- authorizes the service outright.
+    # Checked before the requirements, because the whole point of an exception
+    # clause is that the ordinary criteria stop applying when it is present.
+    waiver = necessity.waiver
+    if waiver is not None:
+        return (
+            Verdict.APPROVED,
+            waiver.clause_id,
+            (
+                f"Authorized under the exception at {waiver.clause_id}, which "
+                f"waives the standard criteria in {governing}. {waiver.rationale}"
+            ),
+            [],
+            facts.units_requested,
+            (
+                facts.procedure.unit_cost * Decimal(facts.units_requested)
+                if facts.procedure
+                else None
+            ),
+        )
+
     if necessity.any_unmet:
         unmet = [a for a in necessity.assessments if a.status.value == "unmet"]
         detail = " ".join(a.rationale for a in unmet[:2])

@@ -1,0 +1,8 @@
+{
+  "stage": "extract_reread",
+  "model": "claude-sonnet-5",
+  "text": "```json\n{\n  \"fields\": {\n    \"member_id\": {\n      \"value\": \"MBR-100?48\",\n      \"confidence\": 0.4,\n      \"bbox\": {\"x\": 0.487, \"y\": 0.183, \"width\": 0.22, \"height\": 0.022}\n    }\n  }\n}\n```",
+  "input_tokens": 6477,
+  "output_tokens": 353,
+  "seconds": 6.016
+}

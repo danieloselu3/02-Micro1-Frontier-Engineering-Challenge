@@ -1,0 +1,8 @@
+{
+  "stage": "verify",
+  "model": "claude-haiku-4-5-20251001",
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"severity\": \"blocking\",\n      \"claim\": \"The record does not address 3 of the 4 criteria in MP-ORT-001.\",\n      \"problem\": \"The medical necessity assessment marks only 3 criteria as NO_EVIDENCE (MP-ORT-001#1, #2, #4). Criterion MP-ORT-001#3 is marked MET. The rationale should state that 3 of 4 criteria are unaddressed and 1 is met, not that all 4 are unaddressed.\"\n    }\n  ]\n}\n```",
+  "input_tokens": 2043,
+  "output_tokens": 151,
+  "seconds": 2.187
+}

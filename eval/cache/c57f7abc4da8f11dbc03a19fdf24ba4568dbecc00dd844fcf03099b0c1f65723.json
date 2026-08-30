@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"approved\",\n  \"governing_rule\": \"MP-IMG-001\",\n  \"reason\": \"Member is active with no waiting period, PA is within the plan's covered service area, and Lambert Surgical Institute is an in-network, unsanctioned provider. The submitted diagnosis (M54.16, lumbar radiculopathy) supports the requested MRI lumbar spine without contrast, imaging benefit has ample remaining balance, and no existing authorization conflicts with this request. Clinically, the documentation satisfies all elements of MP-IMG-001: an 8-week course of supervised PT plus NSAID/muscle relaxant trial with no improvement (Criterion 1), objective exam findings including asymmetric patellar reflex, L4 dermatomal sensory loss, 4/5 ankle dorsiflexion weakness, and a positive straight leg raise at 40 degrees (Criterion 2), recent plain radiographs showing L4-L5 disc space narrowing (Criterion 3), and a stated plan to use the MRI results to guide a pending neurosurgical consultation regarding possible decompression (Criterion 4). The request is therefore approved.\",\n  \"missing_information\": []\n}",
+  "input_tokens": 5250,
+  "output_tokens": 727,
+  "seconds": 7.968
+}

@@ -235,6 +235,10 @@ class PolicyClause(BaseModel):
     document_title: str
     version: str
     text: str
+    #: criterion | exception | scope | note. Only "criterion" clauses are
+    #: requirements the documentation must establish; "exception" waives
+    #: them when it applies.
+    role: str = "criterion"
     score: float = 0.0
 
 
@@ -244,6 +248,12 @@ class CriterionAssessment(BaseModel):
     status: CriterionStatus
     rationale: str
     narrative_support: str | None = None  # verbatim sentence that satisfied it
+
+    #: "criterion" -- the documentation must establish this.
+    #: "exception" -- a clause that WAIVES the requirements when it applies.
+    #: An exception left unestablished is the ordinary case, not a gap; most
+    #: requests do not document a red flag and must not be pended for it.
+    role: str = "criterion"
 
 
 class NecessityJudgment(BaseModel):
@@ -259,18 +269,42 @@ class NecessityJudgment(BaseModel):
     uncertainties: list[str] = Field(default_factory=list)
 
     @property
-    def all_met(self) -> bool:
-        return bool(self.assessments) and all(
-            a.status == CriterionStatus.MET for a in self.assessments
+    def requirements(self) -> list[CriterionAssessment]:
+        """Only the clauses the documentation is obliged to establish."""
+        return [a for a in self.assessments if a.role != "exception"]
+
+    @property
+    def waiver(self) -> CriterionAssessment | None:
+        """An exception clause that applies, if any.
+
+        A satisfied exception -- a documented red flag -- authorizes the
+        service outright and the ordinary criteria no longer apply. This is
+        the clinically urgent path, so it must short-circuit rather than be
+        averaged in with the requirements.
+        """
+        return next(
+            (
+                a
+                for a in self.assessments
+                if a.role == "exception" and a.status == CriterionStatus.MET
+            ),
+            None,
         )
 
     @property
+    def all_met(self) -> bool:
+        reqs = self.requirements
+        return bool(reqs) and all(a.status == CriterionStatus.MET for a in reqs)
+
+    @property
     def any_unmet(self) -> bool:
-        return any(a.status == CriterionStatus.UNMET for a in self.assessments)
+        return any(a.status == CriterionStatus.UNMET for a in self.requirements)
 
     @property
     def missing_evidence(self) -> list[CriterionAssessment]:
-        return [a for a in self.assessments if a.status == CriterionStatus.NO_EVIDENCE]
+        return [
+            a for a in self.requirements if a.status == CriterionStatus.NO_EVIDENCE
+        ]
 
 
 # --------------------------------------------------------------------------

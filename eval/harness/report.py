@@ -81,11 +81,17 @@ def write_report(baseline: dict, solution: dict, out_dir: Path) -> Path:
     lines.append(
         f"The pipeline made **{s['total_model_calls']} model calls** across "
         f"{s['cases']} cases against the baseline's {b['total_model_calls']}, "
-        f"and **{s['cases_with_no_model_call']} cases reached a determination "
-        "with no adjudication model call at all** — requests for procedures "
-        "that never required authorization, and requests stopped by a "
-        "contractual or eligibility rule where medical necessity is "
-        "irrelevant.\n"
+        f"and **{s['settled_without_adjudication']} of {s['cases']} cases "
+        "reached a determination without ever paying for an adjudication** — "
+        f"{s['settled_by_fast_path']} for procedures that never required "
+        f"authorization, and {s['settled_by_hard_stop']} stopped by a "
+        "contractual or eligibility rule, where medical necessity is "
+        "irrelevant and assessing it anyway would be waste with a clinical "
+        "risk attached.\n"
+    )
+    lines.append(
+        "Extraction runs on every case, so no case reaches zero model calls. "
+        "The saving is in the two stages that follow it.\n"
     )
 
     # -- per scenario ------------------------------------------------------

@@ -1,0 +1,8 @@
+{
+  "stage": "extract_reread",
+  "model": "claude-sonnet-5",
+  "text": "",
+  "input_tokens": 6272,
+  "output_tokens": 4000,
+  "seconds": 44.422
+}

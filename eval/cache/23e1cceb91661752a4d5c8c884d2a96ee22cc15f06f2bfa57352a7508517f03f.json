@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"pended\",\n  \"governing_rule\": \"MP-ONC-001\",\n  \"reason\": \"The diagnosis of diffuse large B-cell lymphoma supports use of rituximab, and the member's eligibility, network status, benefit accumulator, and prior authorization history are all in order. However, the clinical justification submitted is generic template language (referencing physical therapy and conservative treatment) and does not document the required treatment regimen, planned dose/schedule, cycle number, or baseline hepatitis B screening results required under medical policy MP-ONC-001 before rituximab can be authorized.\",\n  \"missing_information\": [\n    \"Specific treatment regimen/protocol (e.g., R-CHOP) with planned dose and schedule\",\n    \"Cycle number for this rituximab administration\",\n    \"Documentation of hepatitis B surface antigen and core antibody screening results prior to initiation\"\n  ]\n}",
+  "input_tokens": 4461,
+  "output_tokens": 629,
+  "seconds": 6.953
+}

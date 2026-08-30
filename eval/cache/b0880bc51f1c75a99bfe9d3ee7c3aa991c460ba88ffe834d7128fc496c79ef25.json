@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\": \"denied\", \"governing_rule\": \"R6\", \"reason\": \"The requesting provider, Johnson Regional Medical Center (NPI 9700987944), is currently flagged as sanctioned in plan records. Services rendered by a sanctioned provider cannot be authorized under this plan, regardless of clinical documentation or member eligibility.\", \"missing_information\": []}",
+  "input_tokens": 3628,
+  "output_tokens": 226,
+  "seconds": 3.375
+}

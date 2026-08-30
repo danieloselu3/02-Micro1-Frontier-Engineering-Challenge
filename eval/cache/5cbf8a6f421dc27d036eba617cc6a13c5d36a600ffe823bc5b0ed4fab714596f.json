@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\": \"denied\", \"governing_rule\": \"R6\", \"reason\": \"The rendering provider, Johnson Regional Medical Center, is out-of-network for the member's plan (PLN-HMO-CORE), which requires in-network providers for coverage. Because the provider is not in good standing/contracted status within this plan's network, the request cannot be approved regardless of clinical justification.\", \"missing_information\": []}",
+  "input_tokens": 5063,
+  "output_tokens": 439,
+  "seconds": 6.375
+}

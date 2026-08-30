@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"approved\",\n  \"governing_rule\": \"MP-COS-001\",\n  \"reason\": \"Cheryl Santos's coverage is active, the 30-day waiting period has long passed, Johnson Regional Medical Center is an in-network, non-sanctioned provider located in a covered state, the diagnosis (H02.401) supports CPT 15823, sufficient outpatient benefit remains, and no existing authorization conflicts. Although upper lid blepharoplasty is categorized as cosmetic, the submitted clinical documentation meets all four functional-necessity criteria under policy MP-COS-001: a superior visual field deficit of 28 degrees (Criterion 1), a 16-degree improvement with lid taping (Criterion 2), a margin-to-reflex distance of 1.5 mm (Criterion 3), and documented functional impairment with compensatory brow strain and headache (Criterion 4). The procedure is therefore approved as medically necessary reconstructive surgery rather than cosmetic.\",\n  \"missing_information\": []\n}",
+  "input_tokens": 4469,
+  "output_tokens": 1722,
+  "seconds": 18.579
+}

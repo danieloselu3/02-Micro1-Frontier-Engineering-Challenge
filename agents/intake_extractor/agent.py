@@ -88,7 +88,7 @@ def extract(
             }
         ],
         ledger=ledger,
-        max_tokens=4000,
+        max_tokens=8000,
     )
 
     request = _parse(raw, submission_id)
@@ -159,7 +159,7 @@ def _reread(
             }
         ],
         ledger=ledger,
-        max_tokens=1500,
+        max_tokens=4000,
     )
 
     try:
@@ -188,7 +188,31 @@ def _reread(
 
 
 def _parse(raw: str, submission_id: str) -> ExtractedRequest:
-    data = extract_json(raw)
+    """Turn the response into a typed request.
+
+    An unusable response -- empty, or not JSON -- yields an empty request
+    rather than an exception. That is not defensiveness for its own sake: an
+    empty extraction resolves to no member, which makes the rules return
+    UNKNOWN, which pends the case for a human. A document the system could
+    not read is exactly a case a person should look at, so the existing
+    precedence already handles it correctly and no special path is needed.
+
+    Raising instead would lose the submission entirely, which is the one
+    outcome a payer cannot have.
+    """
+    try:
+        data = extract_json(raw)
+    except ValueError:
+        return ExtractedRequest(
+            submission_id=submission_id,
+            fields={
+                name: ExtractedField(name=name, value=None, confidence=0.0)
+                for name in ALL_FIELDS
+            },
+            clinical_narrative="",
+            overall_confidence=0.0,
+        )
+
     payload = data.get("fields", {})
 
     fields: dict[str, ExtractedField] = {}

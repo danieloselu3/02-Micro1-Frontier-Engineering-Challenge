@@ -28,18 +28,35 @@ class PolicyDoc(BaseModel):
     criteria: list[str]
     footer: str = ""
 
-    def chunks(self) -> list[tuple[str, str]]:
-        """(clause_id, text) split on criterion boundaries.
+    #: 1-based indices into `criteria` that are *exceptions* rather than
+    #: requirements -- clauses which, when satisfied, waive the others.
+    #: A red-flag clause is the canonical case: it is not something the
+    #: documentation must establish, it is something that short-circuits the
+    #: rest when present. Treating one as a requirement means every ordinary
+    #: request is pended for failing to document an emergency it does not
+    #: have.
+    exception_criteria: list[int] = []
 
-        The preamble becomes clause 0 so scope and definitions are
-        retrievable in their own right -- a criterion quoted without its
-        scope statement is how a policy gets misapplied.
+    def chunks(self) -> list[tuple[str, str, str]]:
+        """(clause_id, text, role) split on criterion boundaries.
+
+        Roles matter downstream. Only `criterion` clauses are things the
+        submitted documentation is required to establish; `scope` and `note`
+        are context a reviewer may want but which nothing can "fail", and
+        `exception` waives the requirements when it applies.
         """
-        out = [(f"{self.document_id}#0", f"{self.title} -- Scope\n\n{self.preamble.strip()}")]
+        out = [
+            (
+                f"{self.document_id}#0",
+                f"{self.title} -- Scope\n\n{self.preamble.strip()}",
+                "scope",
+            )
+        ]
         for i, text in enumerate(self.criteria, start=1):
-            out.append((f"{self.document_id}#{i}", text.strip()))
+            role = "exception" if i in self.exception_criteria else "criterion"
+            out.append((f"{self.document_id}#{i}", text.strip(), role))
         if self.footer:
-            out.append((f"{self.document_id}#F", self.footer.strip()))
+            out.append((f"{self.document_id}#F", self.footer.strip(), "note"))
         return out
 
     @property
@@ -118,8 +135,13 @@ infection (fever with intravenous drug use, recent spinal instrumentation, or
 immunosuppression); suspected malignancy (known primary tumour, unexplained
 weight loss, night pain unrelieved by position); or significant trauma in a
 member with osteoporosis or on chronic corticosteroids.
+
+This clause is an exception, not a requirement. Most requests will not
+document a red flag, and their absence is the ordinary case rather than a gap
+in the documentation.
 """,
     ],
+    exception_criteria=[5],
     footer="""
 Where the submitted documentation does not address a criterion, the request
 is returned for additional information rather than denied. A denial is issued

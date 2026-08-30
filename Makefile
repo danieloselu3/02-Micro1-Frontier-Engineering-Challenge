@@ -32,8 +32,16 @@ eval:  ## Run the full pipeline over the evaluation set
 eval-replay:  ## Reproduce both results from committed model responses (no API key)
 	$(PY) -m eval.harness.run --system both --replay
 
+process:  ## Adjudicate every case and file the results for review (uses the cache)
+	$(PY) -m services.worker.process
+
 console:  ## Serve the reviewer console at http://localhost:8080
 	$(PY) -m uvicorn apps.reviewer_console.main:app --port 8080 --reload
+
+demo: up seed eval-replay process  ## Clean-environment path: stack, data, results, queue
+	@echo ""
+	@echo "  Ready. Start the console with:  make console"
+	@echo "  Then open http://localhost:8080"
 
 test:  ## Run the unit suite
 	$(PY) -m pytest -q

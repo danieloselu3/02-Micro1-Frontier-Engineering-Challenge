@@ -185,7 +185,17 @@ def summarise(scores: list[CaseScore]) -> dict:
         "mean_cost_usd": round(sum(float(s.cost_usd) for s in scores) / n, 6),
         "mean_latency_s": round(sum(s.latency_s for s in scores) / n, 2),
         "total_model_calls": sum(s.model_calls for s in scores),
-        "cases_with_no_model_call": sum(1 for s in scores if s.model_calls == 0),
+        # Extraction runs on every case, so "zero model calls" is never
+        # true and never interesting. The claim worth measuring is how
+        # many cases reached a determination without ever paying for an
+        # adjudication -- the fast path and the hard stops.
+        "settled_without_adjudication": sum(
+            1 for s in scores if s.exit_stage in ("no_auth_required", "hard_stop")
+        ),
+        "settled_by_fast_path": sum(
+            1 for s in scores if s.exit_stage == "no_auth_required"
+        ),
+        "settled_by_hard_stop": sum(1 for s in scores if s.exit_stage == "hard_stop"),
         "errors": sum(1 for s in scores if s.error),
     }
 

@@ -121,15 +121,32 @@ class PolicyRetriever:
         for group in self._by_document.values():
             group.sort(key=lambda c: _ordinal(c.clause_id))
 
-    def criteria_for(self, policy_document_id: str) -> list[PolicyClause]:
-        """Every clause of the governing policy, in document order.
+    #: Clause roles the necessity judgment is asked to assess. Scope
+    #: statements and closing notes are context, not requirements -- asking
+    #: whether the documentation "establishes the scope paragraph" produces a
+    #: no-evidence finding on every single request, and pends all of them.
+    ASSESSABLE = ("criterion", "exception")
 
-        The necessity judgment gets the *complete* criteria list, not the
-        top-k most similar to the narrative. Ranking here would be actively
-        harmful: the criterion a narrative fails to mention is precisely the
-        one least similar to it, so a similarity cut-off would silently drop
-        the criterion most likely to matter and turn a pend into an approval.
+    def criteria_for(self, policy_document_id: str) -> list[PolicyClause]:
+        """The assessable clauses of the governing policy, in document order.
+
+        The necessity judgment gets the *complete* set of them, not the top-k
+        most similar to the narrative. Ranking would be actively harmful: the
+        criterion a narrative fails to mention is precisely the one least
+        similar to it, so a similarity cut-off would silently drop the
+        criterion most likely to matter and turn a pend into an approval.
+
+        What is filtered out is by role, not by score. Scope and notes are
+        excluded because nothing can fail them.
         """
+        return [
+            c
+            for c in self._by_document.get(policy_document_id, [])
+            if c.role in self.ASSESSABLE
+        ]
+
+    def all_clauses_for(self, policy_document_id: str) -> list[PolicyClause]:
+        """Everything, including scope and notes -- for the reviewer to read."""
         return list(self._by_document.get(policy_document_id, []))
 
     def coverage_clauses(self, coverage_document_id: str, query: str, limit: int = 3):
@@ -149,7 +166,7 @@ def _ordinal(clause_id: str) -> tuple[int, str]:
 def load_clauses(conn) -> list[PolicyClause]:
     with conn.cursor() as cur:
         cur.execute(
-            """SELECT c.clause_id, c.document_id, c.text,
+            """SELECT c.clause_id, c.document_id, c.text, c.role,
                       d.title AS document_title, d.version
                FROM policy_chunks c
                JOIN policy_documents d USING (document_id)
