@@ -1,0 +1,51 @@
+[project]
+name = "preauth"
+version = "0.1.0"
+description = "Agentic prior-authorization adjudication with a human in the loop"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.9",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "jinja2>=3.1",
+    "python-multipart>=0.0.12",
+    "psycopg[binary]>=3.2",
+    "redis>=5.2",
+    "anthropic>=0.40",
+    "mcp>=1.1",
+    "faker>=30.0",
+    "reportlab>=4.2",
+    "pypdfium2>=4.30",
+    "pillow>=11.0",
+    "numpy>=2.1",
+    "python-dotenv>=1.0",
+    "httpx>=0.27",
+    "rich>=13.9",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.7",
+]
+
+[tool.setuptools.packages.find]
+include = ["packages*", "agents*", "mcp*", "services*", "eval*", "data*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+# UP042 wants StrEnum. We use (str, Enum) deliberately: it keeps str(value)
+# returning the member repr rather than the bare value, which means an enum
+# accidentally interpolated into a prompt or a SQL string is obvious in the
+# output instead of silently looking like valid data.
+ignore = ["UP042"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"

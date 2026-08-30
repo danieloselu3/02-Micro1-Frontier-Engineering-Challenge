@@ -1,0 +1,56 @@
+# The whole system, one command. No cloud account, no GPU, no node build step.
+#
+#   docker compose up -d
+#   make seed && make eval
+#
+# Extraction and adjudication call a hosted model API over the network; every
+# other moving part runs here. `make eval-replay` uses committed model
+# responses so the headline result reproduces with no API key at all.
+
+name: preauth
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: preauth
+      POSTGRES_PASSWORD: preauth
+      POSTGRES_DB: preauth
+    ports: ["5432:5432"]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./packages/core/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U preauth -d preauth"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "no", "--save", ""]
+    ports: ["6379:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  minio:
+    image: minio/minio:latest
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: preauth
+      MINIO_ROOT_PASSWORD: preauthsecret
+    ports: ["9000:9000", "9001:9001"]
+    volumes:
+      - miniodata:/data
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  pgdata:
+  miniodata:
