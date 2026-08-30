@@ -1,0 +1,80 @@
+{
+  "case_id": "CASE-034",
+  "scenario": "necessity_no_evidence",
+  "member": {
+    "member_id": "MBR-100114",
+    "first_name": "Nicholas",
+    "last_name": "Hamilton",
+    "date_of_birth": "1990-10-17",
+    "sex": "M",
+    "plan_id": "PLN-HMO-CORE",
+    "group_id": "GRP-1016",
+    "status": "active",
+    "effective_date": "2025-02-24",
+    "termination_date": null,
+    "premium_paid_through": "2026-12-31",
+    "state": "OH",
+    "enrolled_at": "2025-02-24"
+  },
+  "provider": {
+    "npi": "9132570032",
+    "name": "Williams Regional Medical Center",
+    "specialty": "Orthopedic Surgery",
+    "network_tier": "in_network",
+    "license_state": "OH",
+    "license_expiry": "2027-06-30",
+    "contract_start": "2023-01-01",
+    "contract_end": null,
+    "sanctioned": false,
+    "credentialed_procedures": [
+      "72148",
+      "70553",
+      "74177",
+      "27447",
+      "29881",
+      "22551",
+      "64483",
+      "15823",
+      "19318",
+      "J9310",
+      "33533",
+      "99213",
+      "71046",
+      "80053",
+      "97110",
+      "45378"
+    ]
+  },
+  "procedure_code": "72148",
+  "diagnosis_codes": [
+    "M54.16"
+  ],
+  "date_of_service": "2026-08-14",
+  "units_requested": 1,
+  "clinical_narrative": "35-year-old with ongoing low back pain radiating into the right leg.\nSymptoms have been present for several months and continue to limit daily\nactivity.\n\nExamination shows reduced sensation in the right L5 distribution and a\npositive straight leg raise on the right at approximately 45 degrees.\n\nPlain films of the lumbar spine were obtained on 07/22/2026 and show mild\ndegenerative change at L4-L5 and L5-S1.\n\nRequesting MRI lumbar spine to further evaluate.\n",
+  "form_member_name": "Nicholas Hamilton",
+  "form_member_id": "MBR-100114",
+  "form_provider_npi": "9132570032",
+  "form_date_of_service": "08/14/2026",
+  "label": {
+    "case_id": "CASE-034",
+    "verdict": "pended",
+    "governing_rule": "MP-IMG-001",
+    "rationale": "Neurologic findings and prior radiographs are documented, but the record does not address the required trial of conservative therapy. Nothing contradicts it -- the documentation is silent, so the correct action is to request it.",
+    "scenario": "necessity_no_evidence",
+    "is_adversarial": true,
+    "expected_fields": {
+      "member_name": "Nicholas Hamilton",
+      "member_id": "MBR-100114",
+      "provider_npi": "9132570032",
+      "procedure_code": "72148",
+      "diagnosis_code": "M54.16",
+      "date_of_service": "08/14/2026"
+    },
+    "degradation": "scan",
+    "expected_missing_information": [
+      "Documentation of at least six weeks of conservative therapy (physical therapy, NSAIDs, or activity modification) with dates"
+    ],
+    "requires_human_review": true
+  }
+}

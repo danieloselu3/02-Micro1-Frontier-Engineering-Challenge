@@ -1,0 +1,78 @@
+{
+  "case_id": "CASE-031",
+  "scenario": "necessity_unmet",
+  "member": {
+    "member_id": "MBR-100218",
+    "first_name": "Laurie",
+    "last_name": "Harrison",
+    "date_of_birth": "1967-11-11",
+    "sex": "F",
+    "plan_id": "PLN-HMO-CORE",
+    "group_id": "GRP-1015",
+    "status": "active",
+    "effective_date": "2026-01-11",
+    "termination_date": null,
+    "premium_paid_through": "2026-12-31",
+    "state": "OH",
+    "enrolled_at": "2026-01-11"
+  },
+  "provider": {
+    "npi": "9435750303",
+    "name": "Myers Regional Medical Center",
+    "specialty": "Neurology",
+    "network_tier": "in_network",
+    "license_state": "OH",
+    "license_expiry": "2027-06-30",
+    "contract_start": "2023-01-01",
+    "contract_end": null,
+    "sanctioned": false,
+    "credentialed_procedures": [
+      "72148",
+      "70553",
+      "74177",
+      "27447",
+      "29881",
+      "22551",
+      "64483",
+      "15823",
+      "19318",
+      "J9310",
+      "33533",
+      "99213",
+      "71046",
+      "80053",
+      "97110",
+      "45378"
+    ]
+  },
+  "procedure_code": "72148",
+  "diagnosis_codes": [
+    "M54.50"
+  ],
+  "date_of_service": "2026-08-14",
+  "units_requested": 1,
+  "clinical_narrative": "58-year-old with a two-week history of low back pain following a weekend\nmove. Pain is localised to the lower lumbar region and rated 4/10.\n\nThe patient has not attempted physical therapy and declined a trial of\nNSAIDs, preferring to proceed directly to imaging. No course of conservative\nmanagement has been undertaken.\n\nNeurologic examination is normal: reflexes 2+ and symmetric, sensation\nintact throughout, 5/5 strength in all lower extremity muscle groups.\nStraight leg raise negative bilaterally. No bowel or bladder dysfunction, no\nsaddle anaesthesia, no fever, no history of malignancy, no unexplained\nweight loss.\n\nNo plain radiographs have been obtained.\n\nThe patient requests MRI for reassurance.\n",
+  "form_member_name": "Laurie Harrison",
+  "form_member_id": "MBR-100218",
+  "form_provider_npi": "9435750303",
+  "form_date_of_service": "08/14/2026",
+  "label": {
+    "case_id": "CASE-031",
+    "verdict": "denied",
+    "governing_rule": "MP-IMG-001",
+    "rationale": "The record affirmatively states conservative therapy was not attempted, the neurologic examination is normal, and no red flags are present. Criteria are contradicted, not merely absent.",
+    "scenario": "necessity_unmet",
+    "is_adversarial": true,
+    "expected_fields": {
+      "member_name": "Laurie Harrison",
+      "member_id": "MBR-100218",
+      "provider_npi": "9435750303",
+      "procedure_code": "72148",
+      "diagnosis_code": "M54.50",
+      "date_of_service": "08/14/2026"
+    },
+    "degradation": "fax",
+    "expected_missing_information": [],
+    "requires_human_review": true
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "case_id": "CASE-004",
+  "scenario": "terminated_policy",
+  "member": {
+    "member_id": "MBR-100059",
+    "first_name": "Holly",
+    "last_name": "Moore",
+    "date_of_birth": "1972-08-05",
+    "sex": "F",
+    "plan_id": "PLN-HMO-CORE",
+    "group_id": "GRP-1045",
+    "status": "terminated",
+    "effective_date": "2026-03-02",
+    "termination_date": "2026-07-31",
+    "premium_paid_through": "2026-12-31",
+    "state": "OH",
+    "enrolled_at": "2026-03-02"
+  },
+  "provider": {
+    "npi": "9466124144",
+    "name": "Adams Regional Medical Center",
+    "specialty": "Orthopedic Surgery",
+    "network_tier": "in_network",
+    "license_state": "IN",
+    "license_expiry": "2027-06-30",
+    "contract_start": "2023-01-01",
+    "contract_end": null,
+    "sanctioned": false,
+    "credentialed_procedures": [
+      "72148",
+      "70553",
+      "74177",
+      "27447",
+      "29881",
+      "22551",
+      "64483",
+      "15823",
+      "19318",
+      "J9310",
+      "33533",
+      "99213",
+      "71046",
+      "80053",
+      "97110",
+      "45378"
+    ]
+  },
+  "procedure_code": "72148",
+  "diagnosis_codes": [
+    "M54.16"
+  ],
+  "date_of_service": "2026-08-14",
+  "units_requested": 1,
+  "clinical_narrative": "Patient with persistent symptoms unresponsive to initial management.\nConservative treatment including physical therapy and anti-inflammatory\nmedication has been completed without adequate improvement. Examination and\nprior imaging support the requested service. Referred for further evaluation\nand management.\n",
+  "form_member_name": "Holly Moore",
+  "form_member_id": "MBR-100059",
+  "form_provider_npi": "9466124144",
+  "form_date_of_service": "08/14/2026",
+  "label": {
+    "case_id": "CASE-004",
+    "verdict": "denied",
+    "governing_rule": "R2",
+    "rationale": "Coverage terminated 07/31/2026, before the 08/14/2026 date of service.",
+    "scenario": "terminated_policy",
+    "is_adversarial": true,
+    "expected_fields": {
+      "member_name": "Holly Moore",
+      "member_id": "MBR-100059",
+      "provider_npi": "9466124144",
+      "procedure_code": "72148",
+      "diagnosis_code": "M54.16",
+      "date_of_service": "08/14/2026"
+    },
+    "degradation": "photo",
+    "expected_missing_information": [],
+    "requires_human_review": true
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "case_id": "CASE-040",
+  "scenario": "cosmetic_functional_exception",
+  "member": {
+    "member_id": "MBR-100102",
+    "first_name": "James",
+    "last_name": "Farmer",
+    "date_of_birth": "1969-09-19",
+    "sex": "M",
+    "plan_id": "PLN-PPO-GOLD",
+    "group_id": "GRP-1021",
+    "status": "active",
+    "effective_date": "2025-03-12",
+    "termination_date": null,
+    "premium_paid_through": "2026-12-31",
+    "state": "MI",
+    "enrolled_at": "2025-03-12"
+  },
+  "provider": {
+    "npi": "9527295446",
+    "name": "Lambert Surgical Institute",
+    "specialty": "Plastic Surgery",
+    "network_tier": "in_network",
+    "license_state": "MI",
+    "license_expiry": "2027-06-30",
+    "contract_start": "2023-01-01",
+    "contract_end": null,
+    "sanctioned": false,
+    "credentialed_procedures": [
+      "72148",
+      "70553",
+      "74177",
+      "27447",
+      "29881",
+      "22551",
+      "64483",
+      "15823",
+      "19318",
+      "J9310",
+      "33533",
+      "99213",
+      "71046",
+      "80053",
+      "97110",
+      "45378"
+    ]
+  },
+  "procedure_code": "15823",
+  "diagnosis_codes": [
+    "H53.489"
+  ],
+  "date_of_service": "2026-08-14",
+  "units_requested": 1,
+  "clinical_narrative": "56-year-old with progressive bilateral upper eyelid drooping over three\nyears, now obscuring vision when reading and driving.\n\nVisual field testing dated 07/09/2026 demonstrates a superior field deficit\nof 28 degrees on the right, improving to 12 degrees with the lid manually\nelevated -- a 16-degree improvement on taping.\n\nExternal photographs document a margin-to-reflex distance of 1.5 mm on the\nright. The patient reports compensatory brow elevation and frontal headache\nby end of day.\n\nThis is a functional repair to restore the superior visual field, not a\ncosmetic procedure.\n",
+  "form_member_name": "James Farmer",
+  "form_member_id": "MBR-100102",
+  "form_provider_npi": "9527295446",
+  "form_date_of_service": "08/14/2026",
+  "label": {
+    "case_id": "CASE-040",
+    "verdict": "denied",
+    "governing_rule": "R4",
+    "rationale": "Meridian PPO Gold excludes the cosmetic category outright. The documented visual-field deficit would satisfy the functional criteria, but the plan exclusion is reached first.",
+    "scenario": "cosmetic_functional_exception",
+    "is_adversarial": true,
+    "expected_fields": {
+      "member_name": "James Farmer",
+      "member_id": "MBR-100102",
+      "provider_npi": "9527295446",
+      "procedure_code": "15823",
+      "diagnosis_code": "H53.489",
+      "date_of_service": "08/14/2026"
+    },
+    "degradation": "photo",
+    "expected_missing_information": [],
+    "requires_human_review": true
+  }
+}

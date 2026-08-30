@@ -1,0 +1,78 @@
+{
+  "case_id": "CASE-013",
+  "scenario": "out_of_network",
+  "member": {
+    "member_id": "MBR-100211",
+    "first_name": "Mary",
+    "last_name": "Solis",
+    "date_of_birth": "1983-12-22",
+    "sex": "F",
+    "plan_id": "PLN-HMO-CORE",
+    "group_id": "GRP-1080",
+    "status": "active",
+    "effective_date": "2026-07-24",
+    "termination_date": null,
+    "premium_paid_through": "2026-12-31",
+    "state": "OH",
+    "enrolled_at": "2026-07-24"
+  },
+  "provider": {
+    "npi": "9602951293",
+    "name": "Williams Regional Medical Center",
+    "specialty": "Diagnostic Radiology",
+    "network_tier": "out_of_network",
+    "license_state": "OH",
+    "license_expiry": "2027-06-30",
+    "contract_start": "2023-01-01",
+    "contract_end": null,
+    "sanctioned": false,
+    "credentialed_procedures": [
+      "72148",
+      "70553",
+      "74177",
+      "27447",
+      "29881",
+      "22551",
+      "64483",
+      "15823",
+      "19318",
+      "J9310",
+      "33533",
+      "99213",
+      "71046",
+      "80053",
+      "97110",
+      "45378"
+    ]
+  },
+  "procedure_code": "72148",
+  "diagnosis_codes": [
+    "M54.16"
+  ],
+  "date_of_service": "2026-08-14",
+  "units_requested": 1,
+  "clinical_narrative": "42-year-old presenting with axial low back pain radiating into the left\nlower extremity, onset approximately four months ago after a lifting injury\nat work. Pain is rated 7/10 and worse with sitting and forward flexion.\n\nConservative management: completed 8 weeks of supervised physical therapy\n(24 visits, 06/02/2026 through 07/28/2026) with documented adherence, plus a\nscheduled course of meloxicam 15 mg daily and a two-week trial of\ncyclobenzaprine. Symptoms have not improved; the patient reports no\nmeaningful change in functional capacity.\n\nNeurologic examination: diminished left patellar reflex (1+ compared with 2+\non the right), decreased sensation in the L4 dermatome, and 4/5 strength on\nleft ankle dorsiflexion. Straight leg raise positive at 40 degrees on the\nleft.\n\nPlain radiographs of the lumbar spine (2 views, 07/30/2026) demonstrate disc\nspace narrowing at L4-L5 without acute fracture or spondylolisthesis.\n\nThe patient has been referred for neurosurgical consultation and MRI is\nrequired to determine whether a surgical decompression is indicated.\n",
+  "form_member_name": "Mary Solis",
+  "form_member_id": "MBR-100211",
+  "form_provider_npi": "9602951293",
+  "form_date_of_service": "08/14/2026",
+  "label": {
+    "case_id": "CASE-013",
+    "verdict": "denied",
+    "governing_rule": "R6",
+    "rationale": "Meridian HMO Core requires in-network providers; this provider is out of network.",
+    "scenario": "out_of_network",
+    "is_adversarial": true,
+    "expected_fields": {
+      "member_name": "Mary Solis",
+      "member_id": "MBR-100211",
+      "provider_npi": "9602951293",
+      "procedure_code": "72148",
+      "diagnosis_code": "M54.16",
+      "date_of_service": "08/14/2026"
+    },
+    "degradation": "clean",
+    "expected_missing_information": [],
+    "requires_human_review": true
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "case_id": "CASE-010",
+  "scenario": "excluded_cosmetic",
+  "member": {
+    "member_id": "MBR-100091",
+    "first_name": "Philip",
+    "last_name": "Cruz",
+    "date_of_birth": "1953-02-16",
+    "sex": "M",
+    "plan_id": "PLN-EPO-VALUE",
+    "group_id": "GRP-1053",
+    "status": "active",
+    "effective_date": "2025-04-06",
+    "termination_date": null,
+    "premium_paid_through": "2026-12-31",
+    "state": "MI",
+    "enrolled_at": "2025-04-06"
+  },
+  "provider": {
+    "npi": "9270508733",
+    "name": "Perez Specialty Clinic",
+    "specialty": "Plastic Surgery",
+    "network_tier": "in_network",
+    "license_state": "IN",
+    "license_expiry": "2027-06-30",
+    "contract_start": "2023-01-01",
+    "contract_end": null,
+    "sanctioned": false,
+    "credentialed_procedures": [
+      "72148",
+      "70553",
+      "74177",
+      "27447",
+      "29881",
+      "22551",
+      "64483",
+      "15823",
+      "19318",
+      "J9310",
+      "33533",
+      "99213",
+      "71046",
+      "80053",
+      "97110",
+      "45378"
+    ]
+  },
+  "procedure_code": "15823",
+  "diagnosis_codes": [
+    "H02.401"
+  ],
+  "date_of_service": "2026-08-14",
+  "units_requested": 1,
+  "clinical_narrative": "73-year-old with progressive bilateral upper eyelid drooping over three\nyears, now obscuring vision when reading and driving.\n\nVisual field testing dated 07/09/2026 demonstrates a superior field deficit\nof 28 degrees on the right, improving to 12 degrees with the lid manually\nelevated -- a 16-degree improvement on taping.\n\nExternal photographs document a margin-to-reflex distance of 1.5 mm on the\nright. The patient reports compensatory brow elevation and frontal headache\nby end of day.\n\nThis is a functional repair to restore the superior visual field, not a\ncosmetic procedure.\n",
+  "form_member_name": "Philip Cruz",
+  "form_member_id": "MBR-100091",
+  "form_provider_npi": "9270508733",
+  "form_date_of_service": "08/14/2026",
+  "label": {
+    "case_id": "CASE-010",
+    "verdict": "denied",
+    "governing_rule": "R4",
+    "rationale": "The cosmetic benefit category is excluded under Meridian EPO Value. The exclusion is contractual and is reached before medical necessity.",
+    "scenario": "excluded_cosmetic",
+    "is_adversarial": true,
+    "expected_fields": {
+      "member_name": "Philip Cruz",
+      "member_id": "MBR-100091",
+      "provider_npi": "9270508733",
+      "procedure_code": "15823",
+      "diagnosis_code": "H02.401",
+      "date_of_service": "08/14/2026"
+    },
+    "degradation": "scan",
+    "expected_missing_information": [],
+    "requires_human_review": true
+  }
+}
