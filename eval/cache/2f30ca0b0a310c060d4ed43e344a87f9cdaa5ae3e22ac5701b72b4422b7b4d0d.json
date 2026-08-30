@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"approved\",\n  \"governing_rule\": \"MP-IMG-001\",\n  \"reason\": \"Member is eligible (active, waiting period elapsed), provider is in-network and in good standing, diagnosis M54.16 supports the requested MRI, and imaging benefit has sufficient remaining balance with no conflicting authorization on file. Clinically, the record satisfies all applicable MP-IMG-001 criteria: an 8-week supervised PT program plus NSAID trial without improvement (criterion 1), objective exam findings including asymmetric reflex, L4 dermatomal sensory loss, 4/5 ankle dorsiflexion weakness, and positive straight leg raise at 40 degrees (criterion 2), recent plain radiographs showing L4-L5 disc space narrowing (criterion 3), and a clear statement that the MRI will inform a pending neurosurgical evaluation for possible decompression (criterion 4). The request is approved.\",\n  \"missing_information\": []\n}",
+  "input_tokens": 5231,
+  "output_tokens": 646,
+  "seconds": 7.562
+}

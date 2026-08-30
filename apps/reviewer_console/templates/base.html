@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Utilization Review{% endblock %} &middot; Meridian</title>
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+
+<header class="topbar no-print">
+  <div class="brand">MERIDIAN <span>Utilization Review</span></div>
+  <nav>
+    <a href="/" class="{% block nav_queue %}{% endblock %}">Work queue</a>
+  </nav>
+</header>
+
+<div class="wrap">
+{% block content %}{% endblock %}
+</div>
+
+{% block scripts %}{% endblock %}
+</body>
+</html>

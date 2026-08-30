@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\":\"denied\",\"governing_rule\":\"R3\",\"reason\":\"The member's coverage under Meridian HMO Core became effective 07/15/2026, and the plan imposes a 90-day waiting period before benefits are available. The requested date of service, 08/14/2026, falls only 30 days into the coverage period, well before the 90-day waiting period elapses (which would end 10/13/2026). Because the waiting period had not been satisfied on the date of service, the total knee arthroplasty cannot be authorized regardless of the clinical documentation supporting medical necessity.\",\"missing_information\":[]}",
+  "input_tokens": 4965,
+  "output_tokens": 416,
+  "seconds": 5.297
+}

@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\":\"approved\",\"governing_rule\":\"MP-IMG-001\",\"reason\":\"Member is active and past the 30-day waiting period, resides in a covered state, and the requesting provider is in-network, licensed, and unsanctioned. Imaging benefit has sufficient remaining balance and no prior authorization already exists for this service. The diagnosis (M54.16, lumbar radiculopathy) supports the requested MRI lumbar spine (72148). Clinical documentation satisfies all elements of MP-IMG-001: a completed multi-week trial of supervised physical therapy plus NSAID/muscle relaxant with documented lack of improvement (Criterion 1); objective exam findings including asymmetric patellar reflex, L4 dermatomal sensory loss, 4/5 ankle dorsiflexion weakness, and a positive straight leg raise (Criterion 2); recent plain radiographs showing disc space narrowing without fracture (Criterion 3); and a clearly stated impact on management via pending neurosurgical consultation to evaluate for decompression (Criterion 4). The request is approved.\",\"missing_information\":[]}",
+  "input_tokens": 4088,
+  "output_tokens": 990,
+  "seconds": 11.313
+}

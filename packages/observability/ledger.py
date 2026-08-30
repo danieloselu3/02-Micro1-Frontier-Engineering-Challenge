@@ -35,8 +35,17 @@ class ModelCall:
 
     @property
     def cost_usd(self) -> Decimal:
+        """What this unit of work costs, whether or not we paid today.
+
+        Computed from the recorded token counts even on a cache hit. This is
+        the number that answers "what does it cost to adjudicate a case",
+        which is the question the rubric asks and the one a reviewer sees in
+        the console -- and it has to come out the same whether the run was
+        live or replayed, or the committed cost comparison would collapse to
+        zero for anyone reproducing it.
+        """
         prices = MODEL_PRICES_USD.get(self.model)
-        if prices is None or self.cached:
+        if prices is None:
             return Decimal("0")
         in_price, out_price = prices
         cost = (
@@ -44,6 +53,11 @@ class ModelCall:
             + Decimal(self.output_tokens) * out_price
         ) / _PER_MILLION
         return cost.quantize(Decimal("0.000001"), rounding=ROUND_HALF_UP)
+
+    @property
+    def spend_usd(self) -> Decimal:
+        """What this run actually put on the bill. Zero for a cache hit."""
+        return Decimal("0") if self.cached else self.cost_usd
 
 
 @dataclass
@@ -93,7 +107,13 @@ class CostLedger:
 
     @property
     def total_cost_usd(self) -> Decimal:
+        """Cost of the work. Identical live or replayed."""
         return sum((c.cost_usd for c in self.calls), Decimal("0"))
+
+    @property
+    def total_spend_usd(self) -> Decimal:
+        """Money this particular run spent. Zero on a full cache hit."""
+        return sum((c.spend_usd for c in self.calls), Decimal("0"))
 
     @property
     def total_input_tokens(self) -> int:

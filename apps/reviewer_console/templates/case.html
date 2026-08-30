@@ -1,0 +1,319 @@
+{% extends "base.html" %}
+{% block title %}{{ det.submission_id }}{% endblock %}
+
+{% block content %}
+
+<div class="case-head">
+  <h1>{{ det.submission_id }}</h1>
+  <span class="pill v-{{ det.verdict }}">{{ det.verdict.replace('_',' ') }}</span>
+  <span class="sub">
+    {{ det.channel or 'fax' }} &middot; {{ det.degradation or 'clean' }} document
+    &middot; processed in {{ "%.1f"|format(det.elapsed_seconds or 0) }}s
+    &middot; {{ "$%.4f"|format(det.model_cost_usd|float) }}
+  </span>
+  <span class="sub" style="margin-left:auto"><a href="/">&larr; Work queue</a></span>
+</div>
+
+<div class="columns">
+
+  <!-- ============================ the source of truth ==================== -->
+  <div>
+    <div class="panel">
+      <header>
+        <h2>Submitted document</h2>
+        <span class="spacer"></span>
+        <span class="count">click a field to locate it</span>
+      </header>
+      <div class="doc-frame" id="doc">
+        {% if document %}
+          <img src="/preview/{{ document }}" alt="Prior authorization form as submitted">
+          {% for name, f in (extraction.fields or {}).items() %}
+            {% if f.source %}
+            <div class="bbox" data-field="{{ name }}"
+                 style="left:{{ (f.source.x * 100)|round(2) }}%;
+                        top:{{ (f.source.y * 100)|round(2) }}%;
+                        width:{{ (f.source.width * 100)|round(2) }}%;
+                        height:{{ (f.source.height * 100)|round(2) }}%;"></div>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <div class="empty-state">Document not available.</div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="panel">
+      <header>
+        <h2>What was read off the form</h2>
+        <span class="spacer"></span>
+        <span class="count">
+          overall {{ ((extraction.overall_confidence or 0) * 100)|round|int }}%
+        </span>
+      </header>
+      <div class="fields">
+        {% for name, f in (extraction.fields or {}).items() %}
+        <div class="field {% if f.confidence < 0.95 %}low{% endif %}"
+             data-field="{{ name }}">
+          <span class="k">{{ name.replace('_',' ') }}</span>
+          <span class="v {% if not f.value %}empty{% endif %}">
+            {{ f.value if f.value else 'not read' }}
+          </span>
+          <span class="c">
+            {{ (f.confidence * 100)|round|int }}%{% if f.reread %} ↻{% endif %}
+          </span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================= the evidence ========================== -->
+  <div>
+    <div class="panel">
+      <header>
+        <h2>Deterministic checks</h2>
+        <span class="count">{{ rules|length }} rules</span>
+        <span class="spacer"></span>
+        <span class="count muted">evaluated in code, not by a model</span>
+      </header>
+      {% for r in rules %}
+      <div class="rule-row {{ 'fail' if r.outcome == 'fail' else ('unknown' if r.outcome == 'unknown' else ('na' if r.outcome == 'not_applicable' else '')) }}">
+        <span class="rid">{{ r.rule_id }}</span>
+        <div>
+          <div class="name">{{ r.name }}</div>
+          <div class="why">{{ r.summary }}</div>
+          {% if r.evidence %}
+          <details class="evidence">
+            <summary>Records consulted</summary>
+            <dl>
+              {% for k, v in r.evidence.items() %}{% if v is not none %}
+              <dt>{{ k }}</dt><dd>{{ v }}</dd>
+              {% endif %}{% endfor %}
+            </dl>
+          </details>
+          {% endif %}
+        </div>
+        <span class="outcome o-{{ r.outcome }}">
+          {{ r.outcome.replace('_',' ') }}{% if r.is_hard_stop and r.outcome == 'fail' %} ■{% endif %}
+        </span>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if necessity and necessity.assessments %}
+    <div class="panel">
+      <header>
+        <h2>Medical policy criteria</h2>
+        <span class="count">{{ necessity.assessments|length }}</span>
+        <span class="spacer"></span>
+        <span class="count">
+          assessed with {{ ((necessity.confidence or 0) * 100)|round|int }}% confidence
+        </span>
+      </header>
+      {% for a in necessity.assessments %}
+      <div class="criterion">
+        <div class="top">
+          <span class="cid">{{ a.clause_id }}</span>
+          <span class="pill s-{{ a.status }}">{{ a.status.replace('_',' ') }}</span>
+        </div>
+        <div class="txt">{{ a.criterion_text }}</div>
+        <div class="txt" style="margin-top:5px">{{ a.rationale }}</div>
+        {% if a.narrative_support %}
+        <blockquote>
+          <cite>Quoted from the submitted documentation</cite>
+          {{ a.narrative_support }}
+        </blockquote>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if clauses %}
+    <div class="panel">
+      <header>
+        <h2>Policy text retrieved</h2>
+        <span class="count">{{ clauses|length }} clauses</span>
+      </header>
+      {% for c in clauses %}
+      <details class="evidence" style="padding:9px 14px;border-bottom:1px solid var(--rule)">
+        <summary><span class="mono">{{ c.clause_id }}</span> — {{ c.document_title }}</summary>
+        <div class="small" style="margin-top:7px;white-space:pre-wrap">{{ c.text }}</div>
+      </details>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- ============================== the decision ========================= -->
+  <div>
+    <div class="panel">
+      <header><h2>Recommendation</h2></header>
+
+      <div class="recommend">
+        <div class="verdict-line">
+          <span class="pill v-{{ det.verdict }}">{{ det.verdict.replace('_',' ') }}</span>
+          <span class="tag">{{ det.governing_rule }}</span>
+        </div>
+        <div class="reason">{{ det.reason }}</div>
+        {% if det.approved_amount %}
+        <div class="rule">Approved to {{ det.approved_amount | money }}</div>
+        {% endif %}
+      </div>
+
+      {% if det.missing_information %}
+      <div style="padding:12px 14px;border-bottom:1px solid var(--rule)">
+        <div class="label small muted" style="text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">
+          Information requested
+        </div>
+        <ul class="small" style="margin:0;padding-left:18px">
+          {% for m in det.missing_information %}<li>{{ m }}</li>{% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if necessity and necessity.uncertainties %}
+      <div style="padding:12px 14px;border-bottom:1px solid var(--rule)">
+        <div class="small muted" style="text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">
+          Flagged as uncertain
+        </div>
+        <ul class="small" style="margin:0;padding-left:18px">
+          {% for u in necessity.uncertainties %}<li>{{ u }}</li>{% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if escalations %}
+      <div style="border-bottom:1px solid var(--rule)">
+        <div class="small muted" style="padding:11px 14px 4px;text-transform:uppercase;letter-spacing:.06em">
+          Why this reached you
+        </div>
+        <ul class="flags">
+          {% for e in escalations %}<li>{{ e }}</li>{% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if critic and critic.findings %}
+      <div style="border-bottom:1px solid var(--rule)">
+        <div class="small muted" style="padding:11px 14px 4px;text-transform:uppercase;letter-spacing:.06em">
+          Verification findings
+        </div>
+        <ul class="flags">
+          {% for f in critic.findings %}
+          <li class="{{ f.severity }}">
+            <div>
+              <div>{{ f.problem }}</div>
+              <div class="muted small" style="margin-top:3px">on: &ldquo;{{ f.claim }}&rdquo;</div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+
+    {% if review %}
+    <div class="panel">
+      <header><h2>Signed</h2></header>
+      <div class="body small">
+        <p style="margin-top:0">
+          <strong>{{ review.reviewer_name }}</strong>, {{ review.credentials }}
+          &mdash; {{ review.decision }} on
+          <span class="mono">{{ review.acted_at.strftime('%d %b %Y, %H:%M') }}</span> UTC
+        </p>
+        <p><span class="pill v-{{ review.final_verdict }}">{{ review.final_verdict.replace('_',' ') }}</span></p>
+        {% if review.reason %}<p>{{ review.reason }}</p>{% endif %}
+        <p><a href="/case/{{ det.determination_id }}/letter">View determination letter &rarr;</a></p>
+      </div>
+    </div>
+    {% else %}
+    <div class="panel">
+      <header><h2>Your determination</h2></header>
+      <form class="decide" method="post" action="/case/{{ det.determination_id }}/decide" id="decide">
+        <input type="hidden" name="seconds_spent" id="seconds_spent" value="0">
+
+        <label class="lbl" for="reviewer_id">Reviewing clinician</label>
+        <select name="reviewer_id" id="reviewer_id" required>
+          {% for r in reviewers %}
+          <option value="{{ r.reviewer_id }}">{{ r.name }}, {{ r.credentials }}</option>
+          {% endfor %}
+        </select>
+
+        <label class="lbl" for="decision">Action</label>
+        <select name="decision" id="decision">
+          <option value="confirm">Confirm the recommendation</option>
+          <option value="override">Override it</option>
+          <option value="pend">Request more information</option>
+          <option value="escalate">Escalate to a medical director</option>
+        </select>
+
+        <label class="lbl" for="final_verdict">Determination</label>
+        <select name="final_verdict" id="final_verdict">
+          {% for v in verdicts %}
+          <option value="{{ v }}" {% if v == det.verdict %}selected{% endif %}>
+            {{ v.replace('_',' ') }}
+          </option>
+          {% endfor %}
+        </select>
+
+        <label class="lbl" for="reason">Reason <span id="req" class="muted">(required if you depart from the recommendation)</span></label>
+        <textarea name="reason" id="reason"
+                  placeholder="What did you see that the recommendation missed?"></textarea>
+
+        <div class="btn-row">
+          <button type="submit" class="primary">Sign and issue</button>
+        </div>
+        <p class="hint">
+          Your name and credentials are recorded against this determination and
+          printed on the letter sent to the provider.
+        </p>
+      </form>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Click any extracted field to light up the region of the page it came from.
+// Provenance on every value is what separates review from rubber-stamping.
+(function () {
+  const fields = document.querySelectorAll('.field[data-field]');
+  const boxes  = document.querySelectorAll('.bbox[data-field]');
+
+  function focus(name) {
+    fields.forEach(f => f.classList.toggle('on', f.dataset.field === name));
+    boxes.forEach(b => b.classList.toggle('on', b.dataset.field === name));
+    const box = document.querySelector('.bbox[data-field="' + name + '"]');
+    if (box) box.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }
+
+  fields.forEach(f => f.addEventListener('click', () => focus(f.dataset.field)));
+
+  // Time on case, so "human minutes per determination" is measured rather
+  // than estimated.
+  const started = Date.now();
+  const form = document.getElementById('decide');
+  if (form) {
+    form.addEventListener('submit', () => {
+      document.getElementById('seconds_spent').value =
+        ((Date.now() - started) / 1000).toFixed(1);
+    });
+
+    const decision = document.getElementById('decision');
+    const reason = document.getElementById('reason');
+    const req = document.getElementById('req');
+    function sync() {
+      const overriding = decision.value !== 'confirm';
+      reason.required = overriding;
+      req.style.display = overriding ? 'inline' : 'none';
+    }
+    decision.addEventListener('change', sync);
+    sync();
+  }
+})();
+</script>
+{% endblock %}

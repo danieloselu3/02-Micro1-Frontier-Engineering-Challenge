@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"denied\",\n  \"governing_rule\": \"R7\",\n  \"reason\": \"The member's imaging benefit accumulator for this plan year has only $870.00 remaining, which is insufficient to cover the $1,450.00 allowed amount for CPT 72148 (MRI lumbar spine without contrast). Because the imaging benefit category lacks sufficient remaining balance, this request cannot be approved as submitted, regardless of the clinical findings presented.\",\n  \"missing_information\": []\n}",
+  "input_tokens": 5251,
+  "output_tokens": 463,
+  "seconds": 6.359
+}

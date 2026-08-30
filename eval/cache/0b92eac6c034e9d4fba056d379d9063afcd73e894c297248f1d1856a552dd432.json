@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"denied\",\n  \"governing_rule\": \"MP-IMG-003\",\n  \"reason\": \"The clinical documentation submitted does not meet the medical necessity criteria for CT abdomen/pelvis with contrast in unspecified abdominal pain. While the note references examination and prior imaging, there is no documentation of the required initial laboratory evaluation for this chronic, non-specific presentation, and the described conservative treatment (physical therapy, anti-inflammatory medication) is inconsistent with a gastrointestinal work-up, raising concern that the justification does not reflect an appropriate abdominal pain evaluation. Without evidence of completed lab testing supporting the need for advanced imaging, the request cannot be approved.\",\n  \"missing_information\": [\n    \"Results of laboratory testing (e.g., CBC, metabolic panel, urinalysis, or other relevant labs) performed as part of the initial evaluation of the abdominal pain\",\n    \"Specific objective findings from physical examination or prior imaging directly related to the abdominal complaint\",\n    \"Clarification of the clinical course/treatment history specific to the abdominal pain presentation\"\n  ]\n}",
+  "input_tokens": 3251,
+  "output_tokens": 1076,
+  "seconds": 11.735
+}

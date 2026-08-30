@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\": \"approved\", \"governing_rule\": \"MP-IMG-001\", \"reason\": \"Member is eligible (waiting period satisfied, coverage active), provider is in-network and in good standing, diagnosis M54.16 supports the requested MRI, sufficient imaging benefit remains, and no conflicting authorization exists. Clinical documentation satisfies MP-IMG-001: an 8-week trial of supervised PT plus NSAID/muscle relaxant therapy without improvement (Criterion 1), objective neurologic findings including asymmetric reflex, dermatomal sensory loss, 4/5 motor weakness, and positive straight leg raise (Criterion 2), recent plain radiographs demonstrating L4-L5 disc space narrowing (Criterion 3), and a clear management impact via pending neurosurgical consultation to determine candidacy for decompression (Criterion 4). The MRI lumbar spine without contrast is approved.\", \"missing_information\": []}",
+  "input_tokens": 4077,
+  "output_tokens": 723,
+  "seconds": 8.266
+}

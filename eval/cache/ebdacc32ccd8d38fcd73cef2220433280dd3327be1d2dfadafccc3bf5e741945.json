@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\": \"denied\", \"governing_rule\": \"R9\", \"reason\": \"The diagnosis submitted with this request, J06.9 (acute upper respiratory infection, unspecified), does not support the requested procedure, CPT 72148 (MRI lumbar spine without contrast). This diagnosis is unrelated to lumbar spine pathology and is not among the diagnoses recognized as medically supporting this imaging study. The request cannot be approved on this basis regardless of the clinical narrative provided.\", \"missing_information\": []}",
+  "input_tokens": 4091,
+  "output_tokens": 275,
+  "seconds": 4.031
+}

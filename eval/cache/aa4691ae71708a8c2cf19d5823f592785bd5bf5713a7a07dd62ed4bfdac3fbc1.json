@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"pended\",\n  \"governing_rule\": \"MP-ORT-001\",\n  \"reason\": \"Coverage, network, and diagnosis checks all pass, but the clinical documentation submitted does not meet the medical necessity criteria for total knee arthroplasty. There is no mention of weight-bearing radiographs showing Kellgren-Lawrence grade 3/4 changes, no documented trial of at least three months of conservative management (e.g., physical therapy, medications, injections, assistive devices), and no documentation of preoperative medical evaluation confirming surgical candidacy. Additional information is needed before a determination can be made.\",\n  \"missing_information\": [\n    \"Recent (within 12 months) weight-bearing knee radiographs demonstrating Kellgren-Lawrence grade 3 or 4 changes\",\n    \"Documentation of at least 3 months of conservative management with at least two modalities (PT, medication, injections, assistive device, weight management) including duration and outcome\",\n    \"Documentation of preoperative medical evaluation and surgical candidacy assessment, including comorbidities affecting operative risk\"\n  ]\n}",
+  "input_tokens": 4872,
+  "output_tokens": 814,
+  "seconds": 8.985
+}

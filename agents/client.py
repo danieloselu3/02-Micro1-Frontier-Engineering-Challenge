@@ -16,10 +16,16 @@ of which the project depends on:
   unchanged stages return byte-identical output -- so a movement in the
   results is attributable to the edit rather than to sampling noise.
 
-The cache key covers the model, the full message payload and the sampling
-parameters, so any change to a prompt produces a miss rather than a stale
-hit. Temperature is pinned to 0 throughout; it is not a knob worth having
-when the output feeds a medical determination.
+The cache key covers the model, the full message payload and the token
+ceiling, so any change to a prompt produces a miss rather than a stale hit.
+
+A note on determinism: the Anthropic SDK from v1.x no longer exposes
+sampling controls -- there is no `temperature` parameter to pin to zero.
+Repeated live calls are therefore not guaranteed identical, and the
+reproducibility of the committed results rests entirely on this cache rather
+than on the model being deterministic. That is worth stating plainly: a
+re-recorded run may differ slightly from the committed one, which is exactly
+why the recorded responses are checked in rather than regenerated on demand.
 """
 
 from __future__ import annotations
@@ -75,14 +81,12 @@ class ModelClient:
         messages: list[dict],
         ledger: CostLedger,
         max_tokens: int = 4096,
-        temperature: float = 0.0,
     ) -> str:
         payload = {
             "model": model,
             "system": system,
             "messages": messages,
             "max_tokens": max_tokens,
-            "temperature": temperature,
         }
         key = self._key(payload)
         path = self.cache_dir / f"{key}.json"
@@ -112,7 +116,6 @@ class ModelClient:
             system=system,
             messages=messages,
             max_tokens=max_tokens,
-            temperature=temperature,
         )
         self.misses += 1
         path.write_text(
@@ -145,8 +148,7 @@ class ModelClient:
         return hashlib.sha256(blob.encode("utf-8")).hexdigest()
 
     def _call_api(
-        self, *, model: str, system: str, messages: list[dict],
-        max_tokens: int, temperature: float,
+        self, *, model: str, system: str, messages: list[dict], max_tokens: int
     ) -> tuple[str, tuple[int, int], float]:
         if self._client is None:
             if not self._api_key:
@@ -165,7 +167,6 @@ class ModelClient:
             system=system,
             messages=messages,
             max_tokens=max_tokens,
-            temperature=temperature,
         )
         seconds = time.monotonic() - start
         text = "".join(block.text for block in resp.content if block.type == "text")

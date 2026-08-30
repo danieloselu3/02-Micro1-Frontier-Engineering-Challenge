@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"denied\",\n  \"governing_rule\": \"MP-IMG-001\",\n  \"reason\": \"The member is eligible, the provider is in-network and in good standing, the diagnosis supports the requested imaging, and benefit funds are available, but the clinical documentation submitted does not meet the medical policy criteria for advanced lumbar MRI. There is no documentation of a trial of conservative management (e.g., physical therapy, NSAIDs, or home exercise program of at least six weeks) as required by Criterion 1, and the record does not state how the imaging result will change management (e.g., pending surgical or interventional pain consultation) as required by Criterion 4. While objective radicular findings (positive straight leg raise, sensory loss) and prior plain radiographs are documented, satisfying Criteria 2 and 3, no red-flag condition is present to waive the remaining requirements. Because the conservative therapy and management-impact criteria are not met, the request is denied.\",\n  \"missing_information\": []\n}",
+  "input_tokens": 5032,
+  "output_tokens": 912,
+  "seconds": 11.812
+}

@@ -221,11 +221,11 @@ def load_database(pop: Population, cases: list[GeneratedCase], extra_auths: list
         )
         chunk_rows = []
         for doc in C.ALL_DOCUMENTS:
-            for ordinal, (clause_id, text) in enumerate(doc.chunks()):
-                chunk_rows.append((clause_id, doc.document_id, ordinal, text))
+            for ordinal, (clause_id, text, role) in enumerate(doc.chunks()):
+                chunk_rows.append((clause_id, doc.document_id, ordinal, role, text))
         cur.executemany(
-            "INSERT INTO policy_chunks (clause_id, document_id, ordinal, text) "
-            "VALUES (%s,%s,%s,%s)",
+            "INSERT INTO policy_chunks (clause_id, document_id, ordinal, role, text) "
+            "VALUES (%s,%s,%s,%s,%s)",
             chunk_rows,
         )
 

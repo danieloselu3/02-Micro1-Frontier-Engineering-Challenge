@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\":\"approved\",\"governing_rule\":\"MP-IMG-001\",\"reason\":\"The member is eligible, the provider is in-network and in good standing, the imaging benefit has sufficient remaining balance, no existing authorization conflicts, and the diagnosis (lumbar radiculopathy, M54.16) supports the requested CPT 72148. Clinical documentation satisfies all four required criteria under MP-IMG-001: an 8-week trial of supervised physical therapy plus NSAID/muscle relaxant use with no improvement (Criterion 1); objective neurologic findings including asymmetric patellar reflex, L4 dermatomal sensory loss, 4/5 ankle dorsiflexion weakness, and a positive straight leg raise at 40 degrees (Criterion 2); prior plain radiographs of the lumbar spine performed 07/30/2026 showing disc space narrowing (Criterion 3); and a clearly stated impact on management via pending neurosurgical consultation to determine candidacy for surgical decompression (Criterion 4). The request is approved.\",\"missing_information\":[]}",
+  "input_tokens": 5142,
+  "output_tokens": 672,
+  "seconds": 7.672
+}

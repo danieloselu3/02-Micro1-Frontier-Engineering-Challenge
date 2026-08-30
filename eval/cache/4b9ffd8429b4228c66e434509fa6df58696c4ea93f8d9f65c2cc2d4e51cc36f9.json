@@ -1,0 +1,8 @@
+{
+  "stage": "verify",
+  "model": "claude-haiku-4-5-20251001",
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"severity\": \"blocking\",\n      \"claim\": \"Criteria in MP-IMG-001 are met.\",\n      \"problem\": \"The medical necessity assessment shows that only criteria 1\u20134 are marked MET; criterion 5 is marked NO_EVIDENCE. The rationale asserts all criteria are met without qualification, but the supplied assessment does not support this absolute statement. Criterion 5 is explicitly an exception and its absence is documented as ordinary, so the rationale should clarify that criteria 1\u20134 are satisfied and criterion 5 is not applicable.\"\n    }\n  ]\n}\n```",
+  "input_tokens": 2544,
+  "output_tokens": 152,
+  "seconds": 2.641
+}

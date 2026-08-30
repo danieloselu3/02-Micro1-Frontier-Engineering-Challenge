@@ -112,7 +112,7 @@ def adjudicate(
             facts=facts,
             extraction=extraction,
             model_cost_usd=ledger.total_cost_usd,
-            elapsed_seconds=ledger.elapsed_seconds,
+            elapsed_seconds=ledger.model_seconds,
         )
         return PipelineResult(
             determination=det,
@@ -132,7 +132,7 @@ def adjudicate(
             facts=facts,
             extraction=extraction,
             model_cost_usd=ledger.total_cost_usd,
-            elapsed_seconds=ledger.elapsed_seconds,
+            elapsed_seconds=ledger.model_seconds,
         )
         return PipelineResult(
             determination=det,
@@ -159,7 +159,7 @@ def adjudicate(
         clauses=clauses,
         extraction=extraction,
         model_cost_usd=ledger.total_cost_usd,
-        elapsed_seconds=ledger.elapsed_seconds,
+        elapsed_seconds=ledger.model_seconds,
     )
 
     # -- 10. audit the rationale before anyone sees it ---------------------
@@ -184,7 +184,7 @@ def adjudicate(
         critic=critic,
         extraction=extraction,
         model_cost_usd=ledger.total_cost_usd,
-        elapsed_seconds=ledger.elapsed_seconds,
+        elapsed_seconds=ledger.model_seconds,
     )
 
     return PipelineResult(

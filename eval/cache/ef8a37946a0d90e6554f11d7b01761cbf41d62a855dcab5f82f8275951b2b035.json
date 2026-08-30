@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"pended\",\n  \"governing_rule\": \"MP-PAI-001\",\n  \"reason\": \"The request meets basic eligibility, network, and diagnosis-code requirements, but the clinical documentation does not clearly satisfy the medical policy criteria for a lumbar transforaminal epidural steroid injection. Specifically: (1) conservative therapy adherence is described as inconsistent, which the policy states does not clearly satisfy the conservative management criterion; (2) the sensory examination is described as 'subjectively reduced' without a clear dermatomal pattern, which does not satisfy the dermatomal correlation criterion; and (3) the note itself states uncertainty as to whether the MRI finding at L5-S1 fully accounts for the reported symptom distribution, raising a question of imaging-clinical concordance. These ambiguities require additional clinical information before a coverage determination can be made.\",\n  \"missing_information\": [\n    \"Clarification of adherence to the home exercise/physical therapy program (duration and consistency)\",\n    \"Detailed sensory examination specifying the exact dermatomal distribution of symptoms\",\n    \"Physician attestation or additional clinical correlation confirming the MRI finding at L5-S1 corresponds to the reported right leg radicular pattern\"\n  ]\n}",
+  "input_tokens": 4684,
+  "output_tokens": 654,
+  "seconds": 7.563
+}

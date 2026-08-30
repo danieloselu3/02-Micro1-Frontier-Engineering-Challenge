@@ -47,7 +47,7 @@ def verify(
         system=PROMPT,
         messages=[{"role": "user", "content": user}],
         ledger=ledger,
-        max_tokens=1500,
+        max_tokens=4000,
     )
 
     try:

@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"approved\",\n  \"governing_rule\": \"MP-ORT-001\",\n  \"reason\": \"Mario Sanders is an active member under PLN-PPO-GOLD with no waiting period, and Hart Regional Medical Center is an in-network, appropriately licensed, non-sanctioned provider in a covered state. The diagnosis M17.11 (unilateral primary osteoarthritis, right knee) supports the requested CPT 27447 (total knee arthroplasty), and benefit accumulators show sufficient remaining balance for the procedure. Clinical documentation satisfies all four criteria of MP-ORT-001: weight-bearing radiographs from 07/14/2026 show Kellgren-Lawrence grade 4 bone-on-bone changes (Criterion 1); the member completed over 12 months of conservative management including supervised physical therapy, NSAIDs, two corticosteroid injections, and cane use with inadequate relief (Criterion 2); functional limitation is documented with inability to walk more than one block and cessation of stair use (Criterion 3); and preoperative medical evaluation confirms surgical candidacy (Criterion 4). The request is approved.\",\n  \"missing_information\": []\n}",
+  "input_tokens": 4705,
+  "output_tokens": 999,
+  "seconds": 11.015
+}

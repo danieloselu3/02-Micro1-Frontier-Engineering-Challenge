@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\": \"denied\", \"governing_rule\": \"MP-IMG-001\", \"reason\": \"The clinical documentation does not demonstrate a trial of conservative management (e.g., physical therapy, NSAIDs, activity modification, or a home exercise program) of at least six weeks duration prior to this request, as required by policy MP-IMG-001 criterion 1. While objective exam findings (positive straight leg raise, reduced L5 sensation) and prior plain radiographs are documented, and no red-flag condition is present to waive this requirement, the absence of a documented conservative therapy trial and outcome does not meet the medical necessity criteria for lumbar MRI without contrast.\", \"missing_information\": []}",
+  "input_tokens": 4100,
+  "output_tokens": 443,
+  "seconds": 5.953
+}

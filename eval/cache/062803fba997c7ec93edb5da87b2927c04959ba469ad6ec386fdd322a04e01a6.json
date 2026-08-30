@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"denied\",\n  \"governing_rule\": \"R7\",\n  \"reason\": \"Although the clinical documentation supports the medical necessity of this MRI (radiculopathy with objective neurologic findings, failed conservative therapy, prior radiographs, and a clear impact on management pending neurosurgical consultation), the member's imaging benefit accumulator for the plan year has been fully exhausted ($12,000 limit, $12,000 consumed, $0 remaining). There is no remaining benefit to apply toward this service, so the request cannot be authorized at this time.\",\n  \"missing_information\": []\n}",
+  "input_tokens": 5033,
+  "output_tokens": 408,
+  "seconds": 5.625
+}

@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"approved\",\n  \"governing_rule\": \"MP-COS-001\",\n  \"reason\": \"Vincent Daniels is an active member with an in-network, appropriately licensed provider in a covered state, and the 30-day waiting period has elapsed. Although CPT 15823 (upper lid blepharoplasty) is generally categorized as cosmetic, the submitted diagnosis (H02.401) supports the procedure and the clinical documentation satisfies all four criteria of the functional blepharoplasty policy MP-COS-001: a superior visual field deficit of 28 degrees (exceeds the 12-degree threshold), a 16-degree improvement with lid taping (exceeds the 12-degree improvement threshold), a margin-to-reflex distance of 1.5 mm (at or below the 2.0 mm threshold), and documented functional impairment (reading/driving difficulty, compensatory brow elevation, and frontal headache). Because the procedure is medically necessary rather than purely cosmetic, prior authorization is approved.\",\n  \"missing_information\": []\n}",
+  "input_tokens": 4576,
+  "output_tokens": 1084,
+  "seconds": 11.609
+}

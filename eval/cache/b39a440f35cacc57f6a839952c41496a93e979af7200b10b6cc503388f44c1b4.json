@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\": \"denied\", \"governing_rule\": \"MP-IMG-001\", \"reason\": \"The request for lumbar MRI does not meet medical necessity criteria. There is no documented six-week trial of conservative therapy (the patient declined NSAIDs and PT), no objective neurologic or radicular examination findings (exam is normal with negative straight leg raise), no prior plain radiographs, and no stated impact on management (imaging is requested for reassurance only). No red-flag findings such as cauda equina symptoms, infection, malignancy, or significant trauma are present to waive these requirements. Therefore the request is denied.\", \"missing_information\": []}",
+  "input_tokens": 5089,
+  "output_tokens": 283,
+  "seconds": 4.672
+}

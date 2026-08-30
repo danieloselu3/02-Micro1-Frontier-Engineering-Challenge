@@ -1,0 +1,8 @@
+{
+  "stage": "verify",
+  "model": "claude-haiku-4-5-20251001",
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"severity\": \"blocking\",\n      \"claim\": \"The record does not address 2 of the 5 criteria in MP-IMG-001.\",\n      \"problem\": \"The medical necessity assessment marks criterion 5 as NO_EVIDENCE, but MP-IMG-001#5 explicitly states 'This clause is an exception, not a requirement. Most requests will not document a red flag, and their absence is the ordinary case rather than a gap in the documentation.' The absence of red flags is not a criterion gap; it is the expected ordinary case. Only 2 criteria are actually unaddressed: #1 and #4. Criterion #5's absence does not count as a missing criterion.\"\n    }\n  ]\n}\n```",
+  "input_tokens": 2394,
+  "output_tokens": 179,
+  "seconds": 2.5
+}

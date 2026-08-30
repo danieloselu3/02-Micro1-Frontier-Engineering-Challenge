@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\":\"denied\",\"governing_rule\":\"MP-IMG-001\",\"reason\":\"The clinical documentation does not meet the medical policy criteria for lumbar MRI without contrast. There is no six-week trial of conservative management (the patient declined therapy), no objective neurologic or radicular findings on exam (normal strength, sensation, reflexes, negative straight leg raise), no prior plain radiographs, and no stated impact on management other than patient reassurance. No red-flag findings (e.g., cauda equina, infection, malignancy, trauma) are documented that would waive these requirements. Therefore the request for CPT 72148 is denied.\",\"missing_information\":[]}",
+  "input_tokens": 5136,
+  "output_tokens": 459,
+  "seconds": 6.266
+}

@@ -100,7 +100,7 @@ def run_solution(cases, repo, retriever, client) -> list[CaseScore]:
                         else 0
                     ),
                     cost_usd=ledger.total_cost_usd,
-                    latency_s=ledger.elapsed_seconds,
+                    latency_s=ledger.model_seconds,
                     model_calls=len(ledger.calls),
                     exit_stage=result.exit_stage,
                 )
@@ -116,7 +116,7 @@ def run_solution(cases, repo, retriever, client) -> list[CaseScore]:
                     verdict=Verdict.PENDED,
                     governing_rule="error",
                     cost_usd=ledger.total_cost_usd,
-                    latency_s=ledger.elapsed_seconds,
+                    latency_s=ledger.model_seconds,
                     model_calls=len(ledger.calls),
                     error=str(exc),
                 )
@@ -159,7 +159,7 @@ def run_baseline_system(cases, repo, retriever, client) -> list[CaseScore]:
                     extraction=None,
                     requires_human_review=True,
                     cost_usd=ledger.total_cost_usd,
-                    latency_s=ledger.elapsed_seconds,
+                    latency_s=ledger.model_seconds,
                     model_calls=len(ledger.calls),
                 )
             )
@@ -173,7 +173,7 @@ def run_baseline_system(cases, repo, retriever, client) -> list[CaseScore]:
                     verdict=Verdict.PENDED,
                     governing_rule="error",
                     cost_usd=ledger.total_cost_usd,
-                    latency_s=ledger.elapsed_seconds,
+                    latency_s=ledger.model_seconds,
                     model_calls=len(ledger.calls),
                     error=str(exc),
                 )
@@ -205,7 +205,12 @@ def print_summary(name: str, summary: dict) -> None:
     t.add_row("Mean cost per case", f"${summary['mean_cost_usd']:.5f}")
     t.add_row("Mean latency", f"{summary['mean_latency_s']}s")
     t.add_row("Model calls", f"{summary['total_model_calls']}")
-    t.add_row("Cases with no model call", f"{summary['cases_with_no_model_call']}")
+    t.add_row(
+        "Settled w/o adjudication",
+        f"{summary['settled_without_adjudication']}"
+        f" ({summary['settled_by_fast_path']} no-auth,"
+        f" {summary['settled_by_hard_stop']} hard stop)",
+    )
     if summary["errors"]:
         t.add_row("Errors", f"[red]{summary['errors']}[/red]")
     console.print(t)

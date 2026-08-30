@@ -59,7 +59,7 @@ def judge_necessity(
         system=PROMPT,
         messages=[{"role": "user", "content": user}],
         ledger=ledger,
-        max_tokens=3000,
+        max_tokens=8000,
     )
     return _parse(raw, clauses)
 
@@ -72,7 +72,9 @@ def _render(
     diagnosis: str,
 ) -> str:
     criteria = "\n\n".join(
-        f"[{c.clause_id}]\n{c.text}" for c in clauses
+        f"[{c.clause_id}] {'EXCEPTION' if c.role == 'exception' else 'REQUIREMENT'}\n"
+        f"{c.text}"
+        for c in clauses
     )
     return f"""\
 ## Request
@@ -103,7 +105,10 @@ def _parse(raw: str, clauses: list[PolicyClause]) -> NecessityJudgment:
     otherwise flow straight into a determination letter.
     """
     data = extract_json(raw)
-    known = {c.clause_id for c in clauses}
+    # role comes from the corpus, never from the response -- the model
+    # does not get to reclassify a requirement as an exception.
+    roles = {c.clause_id: c.role for c in clauses}
+    known = set(roles)
 
     assessments: list[CriterionAssessment] = []
     for item in data.get("assessments", []):
@@ -127,6 +132,7 @@ def _parse(raw: str, clauses: list[PolicyClause]) -> NecessityJudgment:
                 narrative_support=(
                     str(support).strip() if support and status == CriterionStatus.MET else None
                 ),
+                role=roles[clause_id],
             )
         )
 
@@ -144,12 +150,14 @@ def _parse(raw: str, clauses: list[PolicyClause]) -> NecessityJudgment:
                     criterion_text=clause.text[:200],
                     status=CriterionStatus.NO_EVIDENCE,
                     rationale="The assessment did not address this criterion.",
+                    role=clause.role,
                 )
             )
-            uncertainties.append(
-                f"Criterion {clause.clause_id} was not assessed and is treated "
-                "as unaddressed."
-            )
+            if clause.role != "exception":
+                uncertainties.append(
+                    f"Criterion {clause.clause_id} was not assessed and is "
+                    "treated as unaddressed."
+                )
 
     return NecessityJudgment(
         assessments=assessments,

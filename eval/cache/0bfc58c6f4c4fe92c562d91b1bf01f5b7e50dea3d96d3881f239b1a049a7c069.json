@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\":\"no_auth_required\",\"governing_rule\":\"R1\",\"reason\":\"CPT 45378 (diagnostic colonoscopy) does not require prior authorization under the member's Meridian PPO Gold plan. The member is active, the provider is in-network and in good standing in the covered state of MI, and the diagnosis (Z12.11) supports the procedure, but since this service is not subject to preauthorization, no prior authorization determination is needed before scheduling.\",\"missing_information\":[]}",
+  "input_tokens": 4134,
+  "output_tokens": 163,
+  "seconds": 3.329
+}

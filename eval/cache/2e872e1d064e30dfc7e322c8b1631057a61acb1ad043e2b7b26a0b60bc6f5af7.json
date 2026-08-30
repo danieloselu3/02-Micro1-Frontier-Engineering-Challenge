@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\": \"denied\", \"governing_rule\": \"R6\", \"reason\": \"Brady Orthopedic Associates is contracted with the plan but is designated out-of-network, and the member's HMO Core plan requires services to be rendered in-network. Because the requesting/rendering provider does not meet the plan's network requirement, the request cannot be authorized regardless of the clinical documentation supporting the MRI.\", \"missing_information\": []}",
+  "input_tokens": 5021,
+  "output_tokens": 439,
+  "seconds": 6.125
+}

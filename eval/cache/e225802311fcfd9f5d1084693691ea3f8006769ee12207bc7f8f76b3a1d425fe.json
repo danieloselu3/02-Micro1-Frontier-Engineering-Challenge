@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\": \"approved\", \"governing_rule\": \"MP-IMG-001\", \"reason\": \"Member is eligible with active coverage, no waiting period applies, the imaging benefit category is not excluded, the provider is in-network and in good standing, and sufficient imaging benefit remains ($2,900 remaining vs. $1,450 cost). The diagnosis (M54.16) supports the requested MRI lumbar spine. Clinical documentation satisfies all elements of MP-IMG-001: (1) an 8-week trial of supervised physical therapy plus NSAID and muscle relaxant with documented lack of improvement; (2) objective exam findings including asymmetric diminished patellar reflex, L4 dermatomal sensory loss, 4/5 ankle dorsiflexion weakness, and positive straight leg raise; (3) recent plain radiographs (07/30/2026) showing disc space narrowing; and (4) a stated impact on management -- pending neurosurgical consultation to determine candidacy for surgical decompression. The request is approved.\", \"missing_information\": []}",
+  "input_tokens": 4095,
+  "output_tokens": 696,
+  "seconds": 7.906
+}

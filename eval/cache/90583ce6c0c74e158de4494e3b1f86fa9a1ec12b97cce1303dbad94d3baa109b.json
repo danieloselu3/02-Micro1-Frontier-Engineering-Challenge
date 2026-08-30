@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\": \"denied\", \"governing_rule\": \"R7\", \"reason\": \"The imaging benefit accumulator for this plan year has only $870.00 remaining, which is insufficient to cover the $1,450.00 cost of the requested MRI lumbar spine (CPT 72148). Because the benefit category lacks sufficient remaining balance, the request cannot be authorized at this time regardless of the clinical documentation submitted.\", \"missing_information\": []}",
+  "input_tokens": 4094,
+  "output_tokens": 458,
+  "seconds": 7.297
+}

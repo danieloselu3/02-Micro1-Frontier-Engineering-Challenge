@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"approved\",\n  \"governing_rule\": \"MP-ORT-001\",\n  \"reason\": \"Member is eligible under an active plan with no waiting period, the requesting provider (Johnson Specialty Clinic) is in-network, in good standing, and licensed in PA (the member's covered state), and the diagnosis M17.11 supports CPT 27447. No existing authorization conflicts and benefit accumulators have adequate remaining balance. Clinical documentation satisfies all four criteria of MP-ORT-001 for total knee arthroplasty: weight-bearing radiographs (07/14/2026) show Kellgren-Lawrence grade 4 changes; conservative management over 14 months included three courses of supervised PT (36 visits), scheduled NSAID therapy, and two intra-articular corticosteroid injections with documented limited relief; functional limitation is documented in observable terms (unable to walk more than one block, unable to use stairs); and the member has completed preoperative medical evaluation and been cleared as an appropriate surgical candidate. The request is approved.\",\n  \"missing_information\": []\n}",
+  "input_tokens": 4661,
+  "output_tokens": 912,
+  "seconds": 10.531
+}

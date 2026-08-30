@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"pended\",\n  \"governing_rule\": \"MP-IMG-001\",\n  \"reason\": \"The clinical documentation supports objective radicular findings (positive straight leg raise, L5 sensory loss) and recent plain radiography, but it does not document a trial of conservative management (physical therapy, NSAIDs, or home exercise program) of at least six weeks, nor does it state how the MRI result will change management (e.g., pending surgical or interventional pain consultation). No red-flag condition is documented that would waive these requirements. Additional information is needed before a determination can be made.\",\n  \"missing_information\": [\n    \"Documentation of a conservative therapy trial (e.g., physical therapy, NSAID course, or home exercise program) of at least six weeks duration within the past 12 months, including outcome\",\n    \"Statement of how the MRI findings will impact management (e.g., pending surgical/neurosurgical consultation or planned interventional pain management contingent on results)\"\n  ]\n}",
+  "input_tokens": 5144,
+  "output_tokens": 681,
+  "seconds": 7.781
+}

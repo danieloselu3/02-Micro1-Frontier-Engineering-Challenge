@@ -1,0 +1,8 @@
+{
+  "stage": "extract_reread",
+  "model": "claude-sonnet-5",
+  "text": "```json\n{\n  \"fields\": {\n    \"date_of_service\": {\n      \"value\": \"0?/14/2026\",\n      \"confidence\": 0.3,\n      \"bbox\": {\"x\": 0.50, \"y\": 0.505, \"width\": 0.20, \"height\": 0.02}\n    }\n  }\n}\n```",
+  "input_tokens": 6205,
+  "output_tokens": 500,
+  "seconds": 7.937
+}

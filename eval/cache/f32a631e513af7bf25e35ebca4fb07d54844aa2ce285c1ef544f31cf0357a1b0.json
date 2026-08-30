@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\"verdict\": \"no_auth_required\", \"governing_rule\": \"R1\", \"reason\": \"CPT 71046 (chest X-ray, 2 views) is classified as basic imaging under the member's plan and does not require prior authorization. The member is eligible and covered, the provider is in-network and in good standing, and the diagnosis supports the procedure, but since no authorization is required for this service, no formal approval determination is needed.\", \"missing_information\": []}",
+  "input_tokens": 3176,
+  "output_tokens": 146,
+  "seconds": 3.718
+}

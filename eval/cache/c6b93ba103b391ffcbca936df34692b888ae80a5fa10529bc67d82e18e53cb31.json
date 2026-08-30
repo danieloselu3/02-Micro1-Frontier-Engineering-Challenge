@@ -1,0 +1,8 @@
+{
+  "stage": "verify",
+  "model": "claude-haiku-4-5-20251001",
+  "text": "```json\n{\n  \"findings\": []\n}\n```",
+  "input_tokens": 2337,
+  "output_tokens": 17,
+  "seconds": 1.0
+}

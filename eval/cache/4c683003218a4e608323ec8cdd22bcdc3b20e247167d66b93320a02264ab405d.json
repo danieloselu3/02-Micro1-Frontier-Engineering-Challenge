@@ -1,0 +1,8 @@
+{
+  "stage": "verify",
+  "model": "claude-haiku-4-5-20251001",
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"severity\": \"blocking\",\n      \"claim\": \"Cannot evaluate: the plan or provider record could not be resolved. The request cannot be adjudicated until this is resolved.\",\n      \"problem\": \"This contradicts the rule results. R1 through R4 and R7 all PASS with complete evidence (plan_id=PLN-EPO-VALUE is resolved, procedure_code and benefit details are available). R5 and R6 are UNKNOWN, but the deterministic rules have already resolved the plan and evaluated benefit coverage successfully. The rationale overstates the severity of the missing data: R5 and R6 are incomplete, but R1\u2013R4 and R7 show the plan was resolved and adjudication can proceed on those grounds.\"\n    }\n  ]\n}\n```",
+  "input_tokens": 2271,
+  "output_tokens": 195,
+  "seconds": 3.375
+}

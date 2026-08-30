@@ -1,0 +1,8 @@
+{
+  "stage": "verify",
+  "model": "claude-haiku-4-5-20251001",
+  "text": "```json\n{\n  \"findings\": [\n    {\n      \"severity\": \"blocking\",\n      \"claim\": \"Criteria in MP-IMG-001 are met.\",\n      \"problem\": \"The rationale asserts all criteria are met, but the medical necessity assessment shows [MP-IMG-001#5] is marked NO_EVIDENCE, not MET. While the clause itself states that absence of red flags is the ordinary case and not a gap, the claim that 'criteria in MP-IMG-001 are met' is contradicted by the supplied assessment, which documents one criterion as unaddressed. The rationale should either specify that criteria 1-4 are met (with 5 inapplicable), or acknowledge the NO_EVIDENCE finding.\"\n    }\n  ]\n}\n```",
+  "input_tokens": 2523,
+  "output_tokens": 180,
+  "seconds": 2.907
+}

@@ -1,0 +1,8 @@
+{
+  "stage": "baseline",
+  "model": "claude-sonnet-5",
+  "text": "{\n  \"verdict\": \"pended\",\n  \"governing_rule\": \"MP-PAI-001\",\n  \"reason\": \"Member is eligible, the provider is in-network and in good standing, the diagnosis (M54.16) supports the requested procedure, and sufficient benefit remains with no conflicting authorization on file. However, the clinical documentation does not clearly satisfy the medical policy criteria for a lumbar transforaminal epidural steroid injection. Conservative therapy adherence is documented as inconsistent, the sensory examination describes only a 'subjectively reduced' and non-dermatomal pattern rather than a clear dermatomal distribution, and the treating provider notes uncertainty as to whether the L5-S1 disc protrusion on MRI fully accounts for the reported symptom distribution. Per MP-PAI-001, these ambiguities require clinical review before a determination can be made.\",\n  \"missing_information\": [\n    \"Clarification of the member's adherence to physical therapy and medication trial (specific dates/degree of compliance)\",\n    \"A clear dermatomal mapping of the sensory and pain distribution correlated with examination findings\",\n    \"Physician attestation or radiology correlation confirming the L5-S1 disc protrusion/S1 nerve root contact anatomically corresponds to the reported symptom pattern\"\n  ]\n}",
+  "input_tokens": 3647,
+  "output_tokens": 922,
+  "seconds": 10.046
+}
