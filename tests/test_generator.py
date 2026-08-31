@@ -12,6 +12,7 @@ the data read as obviously fabricated.
 
 from __future__ import annotations
 
+import hashlib
 import re
 
 import pytest
@@ -38,6 +39,29 @@ class TestDeterminism:
         _, a, _ = generate(SEED)
         _, b, _ = generate(SEED)
         assert [c.model_dump_json() for c in a] == [c.model_dump_json() for c in b]
+
+    def test_labels_match_the_recorded_digest(self):
+        """The generated world must be a pure function of the seed.
+
+        test_same_seed_produces_identical_labels compares two runs in one
+        process on one day, so it cannot see a dependency on the calendar.
+        Faker's date_of_birth() is anchored to date.today(), and using it
+        here made every birth date drift a day per day: the forms changed,
+        the prompts changed, and every recorded model response stopped
+        matching -- so `make eval-replay` failed for anyone who cloned the
+        repo and seeded it on a later date.
+
+        This digest is the world the response cache was recorded against.
+        If it fails, the cache is stale: either the clock has crept back in,
+        or the generator changed on purpose -- in which case re-record with
+        `make eval` and update the digest here.
+        """
+        _, cases, _ = generate(SEED)
+        blob = "\n".join(c.model_dump_json() for c in cases)
+        digest = hashlib.sha256(blob.encode()).hexdigest()
+        assert digest == (
+            "27c44d3ab2d2789a6e279cd829bfc312b354c72f366f4ba5ebada7081c3ef54c"
+        )
 
     def test_different_seed_produces_different_population(self):
         _, a, _ = generate(SEED)
