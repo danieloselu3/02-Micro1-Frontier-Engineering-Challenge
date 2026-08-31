@@ -31,6 +31,13 @@ from packages.core.records import (
 
 PLAN_YEAR = 2026
 
+#: The synthetic world's fixed "today". Ages, enrolment windows and case
+#: dates are all computed relative to this, never to the real wall-clock
+#: date -- otherwise the same seed would produce different data depending on
+#: which calendar day `make seed` happens to run on, silently invalidating
+#: the committed evaluation cache.
+REFERENCE_TODAY = date(2026, 8, 30)
+
 SPECIALTIES = [
     "Orthopedic Surgery",
     "Neurology",
@@ -89,7 +96,7 @@ class Population:
                     self.faker.first_name_male() if sex == "M" else self.faker.first_name_female()
                 ),
                 last_name=self.faker.last_name(),
-                date_of_birth=self.faker.date_of_birth(minimum_age=19, maximum_age=78),
+                date_of_birth=self._date_of_birth(minimum_age=19, maximum_age=78),
                 sex=sex,
                 plan_id=plan.plan_id,
                 group_id=f"GRP-{self.rng.randint(1000, 1099)}",
@@ -102,6 +109,24 @@ class Population:
             )
             self.members.append(member)
             self._build_accumulators_for(member)
+
+    def _date_of_birth(self, minimum_age: int, maximum_age: int) -> date:
+        """Deterministic equivalent of `Faker.date_of_birth`.
+
+        `Faker.date_of_birth` anchors its age window to `datetime.now()`
+        internally, so the same seed yields a different birthdate depending
+        on the real calendar day the generator runs on -- the previous call
+        site hit this directly. This reimplements that method's own body
+        (`date_time_ad` between a computed start/end year) but anchors the
+        window to `REFERENCE_TODAY` instead of the real clock. It still
+        draws from `self.faker`'s seeded stream, not `self.rng`, so it
+        doesn't perturb the draw sequence everything else in this class
+        relies on.
+        """
+        start_date = REFERENCE_TODAY.replace(year=REFERENCE_TODAY.year - (maximum_age + 1))
+        end_date = REFERENCE_TODAY.replace(year=REFERENCE_TODAY.year - minimum_age)
+        dob = self.faker.date_time_ad(start_datetime=start_date, end_datetime=end_date).date()
+        return dob if dob != start_date else dob + timedelta(days=1)
 
     def _build_accumulators_for(self, member: Member) -> None:
         """Give each member a plausible amount of the year already spent."""
@@ -208,7 +233,7 @@ class Population:
         a spurious signal to reason from.
         """
         exclude = exclude or set()
-        on = on or date(PLAN_YEAR, 8, 14)
+        on = on or REFERENCE_TODAY
         candidates = [
             m for m in self.members if m.member_id not in exclude and predicate(m)
         ]
